@@ -1,0 +1,109 @@
+
+
+BEGIN lyt_recplay_test
+
+#------------------------------------------------------------------------------
+# Peripheral Options
+#-----------------------------------------------------------------------------
+OPTION IPTYPE = PERIPHERAL
+OPTION IMP_NETLIST = TRUE
+OPTION HDL = VHDL
+OPTION IP_GROUP = Utility:USER
+OPTION DESC = Record-Playback Test
+OPTION ARCH_SUPPORT_MAP = (OTHERS=DEVELOPMENT)
+
+#------------------------------------------------------------------------------
+# Bus Interfaces
+#-----------------------------------------------------------------------------
+
+#------------------------------------------------------------------------------
+# Generics for VHDL or Parameters for Verilog
+#-----------------------------------------------------------------------------
+PARAMETER AddressWidth_g  = 30, DT = INTEGER
+PARAMETER PortWidth_g     = 8, DT = INTEGER, RANGE = (8, 16, 32, 64)
+PARAMETER NumberOfPorts_g = 1, DT = INTEGER, RANGE = (1, 2, 4, 8, 16)
+
+#------------------------------------------------------------------------------
+# Ports
+#------------------------------------------------------------------------------
+# user interfaces
+IO_INTERFACE IO_IF = RECORD_IF, IO_TYPE = GPIO
+IO_INTERFACE IO_IF = PLAYBACK_IF, IO_TYPE = GPIO
+
+# Control ports
+PORT i_Reset_p                     = "", DIR = I, SIGIS = RST
+PORT i_Start_p                     = "", DIR = I
+PORT i_SetRecTrig_p                = "", DIR = I
+PORT i_SetPlayTrig_p               = "", DIR = I
+
+PORT iv32_TrigAddress_p            = "", DIR = I, VEC = [31:0]
+
+PORT ov32_NbErrorsPort0_p          = "", DIR = O, VEC = [31:0]
+PORT ov32_NbErrorsPort1_p          = "", DIR = O, VEC = [31:0]
+PORT ov32_NbErrorsPort2_p          = "", DIR = O, VEC = [31:0]
+PORT ov32_NbErrorsPort3_p          = "", DIR = O, VEC = [31:0]
+PORT ov32_NbErrorsPort4_p          = "", DIR = O, VEC = [31:0]
+PORT ov32_NbErrorsPort5_p          = "", DIR = O, VEC = [31:0]
+PORT ov32_NbErrorsPort6_p          = "", DIR = O, VEC = [31:0]
+PORT ov32_NbErrorsPort7_p          = "", DIR = O, VEC = [31:0]
+PORT ov32_NbErrorsPort8_p          = "", DIR = O, VEC = [31:0]
+PORT ov32_NbErrorsPort9_p          = "", DIR = O, VEC = [31:0]
+PORT ov32_NbErrorsPort10_p         = "", DIR = O, VEC = [31:0]
+PORT ov32_NbErrorsPort11_p         = "", DIR = O, VEC = [31:0]
+PORT ov32_NbErrorsPort12_p         = "", DIR = O, VEC = [31:0]
+PORT ov32_NbErrorsPort13_p         = "", DIR = O, VEC = [31:0]
+PORT ov32_NbErrorsPort14_p         = "", DIR = O, VEC = [31:0]
+PORT ov32_NbErrorsPort15_p         = "", DIR = O, VEC = [31:0]
+
+PORT ov32_NbDataCh0_p              = "", DIR = O, VEC = [31:0]
+
+PORT iv32_Divnt_p                  = "", DIR = I, VEC = [31:0]
+
+PORT iv32_MaxData_p                = "", DIR = I, VEC = [31:0]
+
+# User ports
+PORT i_WrClk_p                     = "", DIR = I, SIGIS = CLK, IO_IF = RECORD_IF
+PORT i_RdClk_p                     = "", DIR = I, SIGIS = CLK, IO_IF = PLAYBACK_IF
+
+PORT o_RecTrigger_p                = "", DIR = O, IO_IF = RECORD_IF
+PORT ov_RecDataPort0_p             = "", DIR = O, VEC = [PortWidth_g - 1:0], IO_IF = RECORD_IF
+PORT ov_RecDataPort1_p             = "", DIR = O, VEC = [PortWidth_g - 1:0], IO_IF = RECORD_IF
+PORT ov_RecDataPort2_p             = "", DIR = O, VEC = [PortWidth_g - 1:0], IO_IF = RECORD_IF
+PORT ov_RecDataPort3_p             = "", DIR = O, VEC = [PortWidth_g - 1:0], IO_IF = RECORD_IF
+PORT ov_RecDataPort4_p             = "", DIR = O, VEC = [PortWidth_g - 1:0], IO_IF = RECORD_IF
+PORT ov_RecDataPort5_p             = "", DIR = O, VEC = [PortWidth_g - 1:0], IO_IF = RECORD_IF
+PORT ov_RecDataPort6_p             = "", DIR = O, VEC = [PortWidth_g - 1:0], IO_IF = RECORD_IF
+PORT ov_RecDataPort7_p             = "", DIR = O, VEC = [PortWidth_g - 1:0], IO_IF = RECORD_IF
+PORT ov_RecDataPort8_p             = "", DIR = O, VEC = [PortWidth_g - 1:0], IO_IF = RECORD_IF
+PORT ov_RecDataPort9_p             = "", DIR = O, VEC = [PortWidth_g - 1:0], IO_IF = RECORD_IF
+PORT ov_RecDataPort10_p            = "", DIR = O, VEC = [PortWidth_g - 1:0], IO_IF = RECORD_IF
+PORT ov_RecDataPort11_p            = "", DIR = O, VEC = [PortWidth_g - 1:0], IO_IF = RECORD_IF
+PORT ov_RecDataPort12_p            = "", DIR = O, VEC = [PortWidth_g - 1:0], IO_IF = RECORD_IF
+PORT ov_RecDataPort13_p            = "", DIR = O, VEC = [PortWidth_g - 1:0], IO_IF = RECORD_IF
+PORT ov_RecDataPort14_p            = "", DIR = O, VEC = [PortWidth_g - 1:0], IO_IF = RECORD_IF
+PORT ov_RecDataPort15_p            = "", DIR = O, VEC = [PortWidth_g - 1:0], IO_IF = RECORD_IF
+PORT o_RecWriteEn_p                = "", DIR = O, IO_IF = RECORD_IF
+PORT i_RecFifoFull_p               = "", DIR = I, IO_IF = RECORD_IF
+
+PORT o_PlayTrigger_p                = "", DIR = O, IO_IF = PLAYBACK_IF
+PORT iv_PlayDataPort0_p             = "", DIR = I, VEC = [PortWidth_g - 1:0], IO_IF = PLAYBACK_IF
+PORT iv_PlayDataPort1_p             = "", DIR = I, VEC = [PortWidth_g - 1:0], IO_IF = PLAYBACK_IF
+PORT iv_PlayDataPort2_p             = "", DIR = I, VEC = [PortWidth_g - 1:0], IO_IF = PLAYBACK_IF
+PORT iv_PlayDataPort3_p             = "", DIR = I, VEC = [PortWidth_g - 1:0], IO_IF = PLAYBACK_IF
+PORT iv_PlayDataPort4_p             = "", DIR = I, VEC = [PortWidth_g - 1:0], IO_IF = PLAYBACK_IF
+PORT iv_PlayDataPort5_p             = "", DIR = I, VEC = [PortWidth_g - 1:0], IO_IF = PLAYBACK_IF
+PORT iv_PlayDataPort6_p             = "", DIR = I, VEC = [PortWidth_g - 1:0], IO_IF = PLAYBACK_IF
+PORT iv_PlayDataPort7_p             = "", DIR = I, VEC = [PortWidth_g - 1:0], IO_IF = PLAYBACK_IF
+PORT iv_PlayDataPort8_p             = "", DIR = I, VEC = [PortWidth_g - 1:0], IO_IF = PLAYBACK_IF
+PORT iv_PlayDataPort9_p             = "", DIR = I, VEC = [PortWidth_g - 1:0], IO_IF = PLAYBACK_IF
+PORT iv_PlayDataPort10_p            = "", DIR = I, VEC = [PortWidth_g - 1:0], IO_IF = PLAYBACK_IF
+PORT iv_PlayDataPort11_p            = "", DIR = I, VEC = [PortWidth_g - 1:0], IO_IF = PLAYBACK_IF
+PORT iv_PlayDataPort12_p            = "", DIR = I, VEC = [PortWidth_g - 1:0], IO_IF = PLAYBACK_IF
+PORT iv_PlayDataPort13_p            = "", DIR = I, VEC = [PortWidth_g - 1:0], IO_IF = PLAYBACK_IF
+PORT iv_PlayDataPort14_p            = "", DIR = I, VEC = [PortWidth_g - 1:0], IO_IF = PLAYBACK_IF
+PORT iv_PlayDataPort15_p            = "", DIR = I, VEC = [PortWidth_g - 1:0], IO_IF = PLAYBACK_IF
+PORT i_PlayValid_p                  = "", DIR = I, IO_IF = PLAYBACK_IF
+PORT i_PlayEmpty_p                  = "", DIR = I, IO_IF = PLAYBACK_IF
+PORT o_PlayRdEn_p                   = "", DIR = O, IO_IF = PLAYBACK_IF
+
+END

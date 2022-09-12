@@ -1,0 +1,4 @@
+
+lib ntq_timestamp_v1_00_a ntq_timestamp vhdl
+lib ntq_timestamp_v1_00_a syncer vhdl
+

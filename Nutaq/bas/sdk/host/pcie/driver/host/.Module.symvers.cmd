@@ -1,0 +1,1 @@
+cmd_/opt/Nutaq/bas/sdk/host/pcie/driver/host/Module.symvers := sed 's/\.ko$$/\.o/' /opt/Nutaq/bas/sdk/host/pcie/driver/host/modules.order | scripts/mod/modpost -m -a  -o /opt/Nutaq/bas/sdk/host/pcie/driver/host/Module.symvers -e -i Module.symvers   -T -

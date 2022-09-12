@@ -1,0 +1,136 @@
+<?xml version="1.0"?>
+<block>
+  <name>RTDEX Sink</name>
+  <key>nutaq_rtdex_sink</key>
+  <category>Nutaq</category>
+  <throttle>1</throttle>
+  <import>import nutaq</import>
+  <make>nutaq.rtdex_sink($target_id,$type.size,$num_chan,$block_priority)
+#if $media_type()
+self.$(id).set_type($media_type)
+#end if
+#if $packet_size()
+self.$(id).set_packet_size($packet_size)
+#end if
+#if $channels()
+self.$(id).set_channels($channels)
+#end if
+</make>
+
+  <param>
+    <name>Target ID</name>
+    <key>target_id</key>
+    <type>string</type>
+  </param>
+
+  <param>
+    <name>Block Priority</name>
+    <key>block_priority</key>
+    <type>int</type>
+  </param>
+
+  <param>
+    <name>Input Type</name>
+    <key>type</key>
+    <type>enum</type>
+    <option>
+        <name>Complex</name>
+        <key>complex</key>
+        <opt>size:gr.sizeof_gr_complex</opt>
+    </option>
+    <option>
+        <name>Float</name>
+        <key>float</key>
+        <opt>size:gr.sizeof_float</opt>
+    </option>
+    <option>
+        <name>Int</name>
+        <key>int</key>
+        <opt>size:gr.sizeof_int</opt>
+    </option>
+    <option>
+        <name>Short</name>
+        <key>short</key>
+        <opt>size:gr.sizeof_short</opt>
+    </option>
+    <option>
+        <name>Byte</name>
+        <key>byte</key>
+        <opt>size:gr.sizeof_char</opt>
+    </option>
+  </param>
+
+  <param>
+    <name>Media Type</name>
+    <key>media_type</key>
+    <value>0</value>
+    <type>enum</type>
+    <option><name>Ethernet</name><key>0</key></option>
+    <option><name>PCI Express</name><key>1</key></option>
+    <option><name>Axi</name><key>2</key></option>
+  </param>
+
+  <param>
+    <name>Packet Size</name>
+    <key>packet_size</key>
+    <value>1024</value>
+    <type>int</type>
+  </param>
+
+  <param>
+    <name>Number of Channels</name>
+    <key>num_chan</key>
+    <type>enum</type>
+    <option><name>1</name><key>1</key></option>
+    <option><name>2</name><key>2</key></option>
+    <option><name>3</name><key>3</key></option>
+    <option><name>4</name><key>4</key></option>
+    <option><name>5</name><key>5</key></option>
+    <option><name>6</name><key>6</key></option>
+    <option><name>7</name><key>7</key></option>
+    <option><name>8</name><key>8</key></option>
+  </param>
+
+  <param>
+    <name>Channels</name>
+    <key>channels</key>
+    <type>string</type>
+  </param>
+  
+  <check>$target_id</check>
+  <check>$channels</check>
+  <check>$block_priority >= 0</check>
+
+  <sink>
+    <name>in</name>
+    <type>$type</type>
+    <nports>$num_chan</nports>
+  </sink>
+
+  <doc>
+This block sends data to a carrier board. Up to 8 channels may be specified. Data will be sent in a round-robin fashion. The channels must have the same rate.
+
+Target ID:
+Block ID of the carrier where the RTDEX endpoint is located.
+
+Block Priority:
+Specify the priority of the block between all the blocks who have this parameter. It sets the block order to be executed . Priority order starts from 0. For example, the block with priority of 0 will be the first to be executed, then priority 1, then priority 2, etc. 
+
+Input Type:
+Format of input streams.
+
+Media Type:
+Allows to switch between PCI Express and Ethernet RTDEX transport when using a Perseus board as a carrier.
+
+Packet Size:
+Should be configured as a power of two for more efficient processing.
+
+Number of Channels:
+Up to 8 channels may be used at the same time.
+
+Channels:
+List of channel to write to (e.g. 1,4,5).
+
+  </doc>
+
+</block>

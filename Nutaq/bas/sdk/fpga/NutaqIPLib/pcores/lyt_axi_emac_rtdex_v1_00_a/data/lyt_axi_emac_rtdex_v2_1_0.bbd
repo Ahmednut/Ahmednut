@@ -1,0 +1,2 @@
+FILES
+rtdex_tx_core.ngc, rtdex_mux_tx.ngc, rtdex_rx_core.ngc, rtdex_mux_rx.ngc, rtdex_pause_req_gen.ngc, fifo_w37_d16.ngc, fifo_w37_d32.ngc

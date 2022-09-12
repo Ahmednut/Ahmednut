@@ -1,0 +1,22 @@
+
+#INST "*/v6Ddr3Controler64b_l/u_memc_ui_top/u_ui_top/ui_rd_data0"  AREA_GROUP = "RecPlaySlices";
+#INST "*/v6Ddr3Controler64b_l/u_memc_ui_top/u_ui_top/ui_cmd0"  AREA_GROUP = "RecPlaySlices";
+#INST "*/RecPlayDispatcher_l"   AREA_GROUP = "RecPlaySlices";
+#INST "*/RTDExTx_l/Fifo_l"  AREA_GROUP = "RecPlaySlices";
+#
+#AREA_GROUP "RecPlaySlices"    RANGE = SLICE_X40Y215:SLICE_X60Y269;
+
+# INST "*/RTDExTx_l/Fifo_l/*/ramloop[0].ram.r/v6_noinit.ram/SDP.SIMPLE_PRIM36.ram"  LOC=RAMB36_X1Y41;
+# INST "*/RTDExTx_l/Fifo_l/*/ramloop[1].ram.r/v6_noinit.ram/SDP.SIMPLE_PRIM36.ram"  LOC=RAMB36_X1Y42;
+# INST "*/RTDExTx_l/Fifo_l/*/ramloop[2].ram.r/v6_noinit.ram/SDP.SIMPLE_PRIM36.ram"  LOC=RAMB36_X1Y43;
+# INST "*/RTDExTx_l/Fifo_l/*/ramloop[3].ram.r/v6_noinit.ram/SDP.SIMPLE_PRIM36.ram"  LOC=RAMB36_X1Y44;
+# INST "*/RTDExTx_l/Fifo_l/*/ramloop[4].ram.r/v6_noinit.ram/SDP.SIMPLE_PRIM36.ram"  LOC=RAMB36_X2Y41;
+# INST "*/RTDExTx_l/Fifo_l/*/ramloop[5].ram.r/v6_noinit.ram/SDP.SIMPLE_PRIM36.ram"  LOC=RAMB36_X2Y42;
+# INST "*/RTDExTx_l/Fifo_l/*/ramloop[6].ram.r/v6_noinit.ram/SDP.SIMPLE_PRIM36.ram"  LOC=RAMB36_X2Y43;
+# INST "*/RTDExTx_l/Fifo_l/*/ramloop[7].ram.r/v6_noinit.ram/SDP.SIMPLE_PRIM36.ram"  LOC=RAMB36_X2Y44;
+
+
+INST "*/v6Ddr3Controler64b_l/u_memc_ui_top/u_ui_top/ui_cmd0/*" AREA_GROUP = "pblock_ui_cmd0";
+INST "*/v6Ddr3Controler64b_l/u_memc_ui_top/u_mem_intfc/mc0/*" AREA_GROUP = "pblock_ui_cmd0";
+INST "*/RecPlayDispatcher_l/mem_controller_inst" AREA_GROUP = "pblock_ui_cmd0";
+AREA_GROUP "pblock_ui_cmd0" RANGE=SLICE_X88Y240:SLICE_X139Y279;

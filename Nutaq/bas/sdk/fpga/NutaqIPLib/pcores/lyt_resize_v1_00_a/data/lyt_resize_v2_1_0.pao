@@ -1,0 +1,7 @@
+##############################################################################
+## Filename:          /home/dlacasse/Share/projets/adp/examples_perseus6010/perseus6010_radio420x_loopback/edk/pcores/lyt_rtdex_tx_if_v1_00_a/data/lyt_rtdex_tx_if_v2_1_0.pao
+## Description:       Peripheral Analysis Order
+## Date:              Thu Jan 12 13:38:49 2012 (by Create and Import Peripheral Wizard)
+##############################################################################
+
+lib lyt_resize_v1_00_a lyt_resize vhdl

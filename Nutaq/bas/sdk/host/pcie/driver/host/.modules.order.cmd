@@ -1,0 +1,1 @@
+cmd_/opt/Nutaq/bas/sdk/host/pcie/driver/host/modules.order := {   echo /opt/Nutaq/bas/sdk/host/pcie/driver/host/host_drv.ko; :; } | awk '!x[$$0]++' - > /opt/Nutaq/bas/sdk/host/pcie/driver/host/modules.order

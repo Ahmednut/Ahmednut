@@ -1,0 +1,8 @@
+##############################################################################
+## Filename:
+## Description:       Peripheral Analysis Order
+## Date:              Fri Oct 26 16:37:15 2007 (by Create and Import Peripheral Wizard)
+##############################################################################
+
+lib lyt_freq_counter_v1_00_a freq_cnt vhdl
+lib lyt_freq_counter_v1_00_a lyt_freq_counter vhdl

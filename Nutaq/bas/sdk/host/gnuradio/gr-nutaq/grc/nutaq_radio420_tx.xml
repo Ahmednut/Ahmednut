@@ -1,0 +1,282 @@
+<?xml version="1.0"?>
+<block>
+  <name>Radio420 TX</name>
+  <key>nutaq_radio420_tx</key>
+  <category>Nutaq</category>
+  <throttle>1</throttle>
+  <import>import nutaq</import>
+  <make>nutaq.radio420_tx($target_id, $selected_card, $block_priority)
+self.$(id).set_default_enable($enable)
+self.$(id).set_default_tx_freq($tx_freq)
+self.$(id).set_default_reference($reference)
+self.$(id).set_default_datarate($datarate)
+self.$(id).set_default_calibrate($calibrate)
+self.$(id).set_default_band($band)
+self.$(id).set_default_update_rate($update_rate)
+self.$(id).set_default_tx_vga1_gain($tx_vga1_gain)
+self.$(id).set_default_tx_vga2_gain($tx_vga2_gain)
+self.$(id).set_default_tx_gain3($tx_gain3)
+self.$(id).set_default_tx_lpf_bandwidth($tx_lpf_bandwidth)
+self.$(id).set_default_ref_clk_ctrl($ref_clk_ctrl)
+self.$(id).set_default_rf_ctrl($rf_ctrl)
+self.$(id).set_default_tx_gain_ctrl($tx_gain_ctrl)
+self.$(id).set_default_pll_cpld_ctrl($pll_cpld_ctrl)
+  </make>
+  <callback>self.$(id).set_tx_gain($tx_gain3)
+self.$(id).set_tx_freq($tx_freq)
+  </callback>
+
+  <param>
+    <name>Target ID</name>
+    <key>target_id</key>
+    <type>string</type>
+  </param>
+
+  <param>
+    <name>Block Priority</name>
+    <key>block_priority</key>
+    <type>int</type>
+  </param>
+
+  <param>
+    <name>Card number</name>
+    <key>selected_card</key>
+    <value>1</value>
+    <type>enum</type>
+    <option><name>Card 1</name><key>1</key></option>
+    <option><name>Card 2</name><key>2</key></option>
+  </param>
+  
+  <param>
+    <name>Enable</name>
+    <key>enable</key>
+    <value>1</value>
+    <type>enum</type>
+    <option><name>False</name><key>0</key></option>
+    <option><name>True</name><key>1</key></option>
+  </param>
+  
+  <param>
+    <name>Reference</name>
+    <key>reference</key>
+    <value>900e6</value>
+    <type>enum</type>    
+    <hide>part</hide>
+    <option><name>Internal</name><key>0</key></option>
+    <option><name>External</name><key>1</key></option>
+  </param>
+
+  <param>
+    <name>TX frequency</name>
+    <key>tx_freq</key>
+    <value>900e6</value>
+    <type>real</type>
+  </param>
+    
+  <param>
+    <name>Data rate</name>
+    <key>datarate</key>
+    <value>5760000</value>
+    <type>real</type>
+  </param>
+
+  <param>
+    <name>Automatic Calibration</name>
+    <key>calibrate</key>
+    <value>0</value>
+    <type>enum</type>    
+    <hide>part</hide>
+    <option><name>Disabled</name><key>0</key></option>
+    <option><name>Enabled</name><key>1</key></option>
+  </param>
+
+ <param>
+    <name>Band</name>
+    <key>band</key>
+    <type>enum</type>    
+    <hide>part</hide>
+    <option><name>Low band (300 to 1500 MHz)</name><key>0</key></option>
+    <option><name>High band (1500 to 3800 MHz)</name><key>1</key></option>
+ </param>
+
+  <param>
+    <name>Update Rate</name>
+    <key>update_rate</key>
+    <value>1</value>
+    <type>float</type>    
+    <hide>part</hide>
+  </param>
+
+  <param>
+    <name>TX VGA1 gain</name>
+    <key>tx_vga1_gain</key>
+    <value>-17</value>
+    <type>int</type>    
+    <hide>part</hide>
+  </param>
+  
+  <param>
+    <name>TX VGA2 gain</name>
+    <key>tx_vga2_gain</key>
+    <value>5</value>
+    <type>int</type>    
+    <hide>part</hide>
+  </param>
+
+  <param>
+    <name>TX gain 3</name>
+    <key>tx_gain3</key>
+    <value>-3</value>
+    <type>int</type>    
+    <hide>part</hide>
+  </param>
+
+  <param>
+    <name>TX Low Pass Filter Bandwidth</name>
+    <key>tx_lpf_bandwidth</key>
+    <value>0</value>
+    <type>enum</type>    
+    <hide>part</hide>
+    <option><name>28 MHz</name><key>0</key></option>
+    <option><name>20 MHz</name><key>1</key></option>
+    <option><name>14 MHz</name><key>2</key></option>
+    <option><name>12 MHz</name><key>3</key></option>
+    <option><name>10 MHz</name><key>4</key></option>
+    <option><name>8.75 MHz</name><key>5</key></option>
+    <option><name>7 MHz</name><key>6</key></option>
+    <option><name>6 MHz</name><key>7</key></option>
+    <option><name>5.5 MHz</name><key>8</key></option>
+    <option><name>5 MHz</name><key>9</key></option>
+    <option><name>3.84 MHz</name><key>10</key></option>
+    <option><name>3 MHz</name><key>11</key></option>
+    <option><name>2.75 MHz</name><key>12</key></option>
+    <option><name>2.5 MHz</name><key>13</key></option>
+    <option><name>1.75 MHz</name><key>14</key></option>
+    <option><name>1.5 MHz</name><key>15</key></option>
+    <option><name>Bypass</name><key>16</key></option>
+  </param>
+  
+  <param>
+    <name>Reference Clock Control</name>
+    <key>ref_clk_ctrl</key>
+    <value>0</value>
+    <type>enum</type>    
+    <hide>part</hide>
+    <option><name>Host</name><key>0</key></option>
+    <option><name>FPGA</name><key>1</key></option>
+  </param>
+  
+    <param>
+    <name>Radio Frequency Control</name>
+    <key>rf_ctrl</key>
+    <value>0</value>
+    <type>enum</type>    
+    <hide>part</hide>
+    <option><name>Host</name><key>0</key></option>
+    <option><name>FPGA</name><key>1</key></option>
+  </param>
+  
+    <param>
+    <name>TX Gain Control</name>
+    <key>tx_gain_ctrl</key>
+    <value>0</value>
+    <type>enum</type>    
+    <hide>part</hide>
+    <option><name>Host</name><key>0</key></option>
+    <option><name>FPGA</name><key>1</key></option>
+  </param>
+  
+    <param>
+    <name>PLL/CPLD Control</name>
+    <key>pll_cpld_ctrl</key>
+    <value>0</value>
+    <type>enum</type>    
+    <hide>part</hide>
+    <option><name>Host</name><key>0</key></option>
+    <option><name>FPGA</name><key>1</key></option>
+  </param>
+  
+
+  <check>$target_id</check>
+  <check>$datarate >= 1e6</check>
+  <check>$datarate &lt;= 81.92e6</check>
+  <check>$tx_freq >= 300e6</check>
+  <check>$tx_freq &lt;= 3.8e9</check>
+  <check>$tx_vga1_gain >= -35</check>
+  <check>$tx_vga1_gain &lt;= -4</check>
+  <check>$tx_vga2_gain >= 0</check>
+  <check>$tx_vga2_gain &lt;= 25</check>
+  <check>$tx_gain3 >= -13</check>
+  <check>$tx_gain3 &lt;=18</check>
+  <check>$block_priority >= 0</check>
+
+  <sink>
+    <name>gain</name>
+    <type>float</type>
+    <optional>1</optional>
+  </sink>
+
+  <sink>
+    <name>freq</name>
+    <type>float</type>
+    <optional>1</optional>
+  </sink>
+
+<doc>
+Target ID:
+Block ID of carrier board.
+
+Block Priority:
+Specify the priority of the block between all the blocks who have this parameter. It sets the block order to be executed . Priority order starts from 0. For example, the block with priority of 0 will be the first to be executed, then priority 1, then priority 2, etc. 
+
+Card Number:
+Card number of the Radio420 (1 or 2).
+
+Enable:
+Enable the RF path and the local oscillator. Must be set to False when the radio direction is unused.
+
+Reference:
+This set the reference source for the Radio420 PLL. The reference clock can be the internal 30.72 MHz oscillator or be the input reference at Rin external connector. The reference frequency is set by default to 30.72 MHz in the block implementation.
+
+TX frequency:
+This is the center frequency of the signal that is emitted by the Radio420 (carrier frequency).
+
+Data rate:
+This is the data rate from the DAC and to the ADC. Since the signal is interleaved (IQ), the acquisition frequency is half of the data rate.
+
+Automatic Calibration:
+When automatic calibration is enabled, a calibration algorithm will be run during initialization to minimize LO leakage, IQ gain and phase imbalance.
+
+Band:
+Select the optimal RF path for your signal. Low band is better matched for signal from 300 to 1500 MHz and high band is better for signal from 1500 to 3000 MHz.
+
+Update Rate:
+How often to update the gain. This value is in Hertz.
+
+TX VGA1 gain:
+Transmit amplifier 1. Can be set from -35 dB to -4 dB.
+
+TX VGA2 gain:
+Transmit amplifier 2. Can be set from 0 to 25 dB.
+
+TX gain 3:
+Transmist amplifier 3. Can be set from -13 dB to 18 dB.
+
+TX Low Pass Filter Bandwidth:
+This is a configurable analog filter within the TX path. You may set it to any value in the available list. The values are bandwidths on each side of the center frequencies.
+
+Reference Clock Control:
+This is to select who controls the Reference Clock between the Host and the FPGA.
+
+Radio Frequency Control:
+This is to select who controls the Radio Frequency between the Host and the FPGA.
+
+TX Gain Control:
+This is to select who controls the TX Gain between the Host and the FPGA.
+
+PLL/CPLD Control:
+This is to select who controls the PLL/CPLD(io expanders) between the Host and the FPGA.
+
+</doc>
+
+</block>

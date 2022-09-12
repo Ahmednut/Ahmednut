@@ -1,0 +1,13 @@
+
+# Radio420x constraints for Channel 2, LX240 and SX315
+
+# Locations of the IDELAYCTRLs
+
+INST "*/radio420x_top_u0/limeADC_l/IDELAYCTRL_inst" LOC = "IDELAYCTRL_X0Y2";
+INST "*/radio420x_top_u0/limeADC_l/BUFR_inst" LOC = BUFR_X0Y4;
+
+NET "*/radio420x_top_u0/limeADC_l/adcFifo_l/BU2/U0/grf.rf/gcx.clkx/wr_pntr_gc<*>" TIG;
+NET "*/radio420x_top_u0/limeADC_l/adcFifo_l/BU2/U0/grf.rf/gcx.clkx/rd_pntr_gc<*>" TIG;
+
+NET "*/radio420x_top_u0/limeDAC_l/adcFifo_l/BU2/U0/grf.rf/gcx.clkx/wr_pntr_gc<*>" TIG;
+NET "*/radio420x_top_u0/limeDAC_l/adcFifo_l/BU2/U0/grf.rf/gcx.clkx/rd_pntr_gc<*>" TIG;

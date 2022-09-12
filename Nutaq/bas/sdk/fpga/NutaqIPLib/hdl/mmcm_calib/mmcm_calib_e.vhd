@@ -1,0 +1,84 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.all;
+
+entity mmcm_calib is
+generic (
+
+      BANDWIDTH : string := "OPTIMIZED";
+      CLKFBOUT_MULT_F : real := 1.0;
+      CLKFBOUT_PHASE : real := 0.0;
+      CLKFBOUT_USE_FINE_PS : boolean := FALSE;
+      CLKIN1_PERIOD : real := 0.0;
+      CLKIN2_PERIOD : real := 0.0;
+      CLKOUT0_DIVIDE_F : real := 1.0;
+      CLKOUT0_DUTY_CYCLE : real := 0.5;
+      CLKOUT0_PHASE : real := 0.0;
+      CLKOUT0_USE_FINE_PS : boolean := FALSE;
+      CLKOUT1_DIVIDE : integer := 1;
+      CLKOUT1_DUTY_CYCLE : real := 0.5;
+      CLKOUT1_PHASE : real := 0.0;
+      CLKOUT1_USE_FINE_PS : boolean := FALSE;
+      CLKOUT2_DIVIDE : integer := 1;
+      CLKOUT2_DUTY_CYCLE : real := 0.5;
+      CLKOUT2_PHASE : real := 0.0;
+      CLKOUT2_USE_FINE_PS : boolean := FALSE;
+      CLKOUT3_DIVIDE : integer := 1;
+      CLKOUT3_DUTY_CYCLE : real := 0.5;
+      CLKOUT3_PHASE : real := 0.0;
+      CLKOUT3_USE_FINE_PS : boolean := FALSE;
+      CLKOUT4_CASCADE : boolean := FALSE;
+      CLKOUT4_DIVIDE : integer := 1;
+      CLKOUT4_DUTY_CYCLE : real := 0.5;
+      CLKOUT4_PHASE : real := 0.0;
+      CLKOUT4_USE_FINE_PS : boolean := FALSE;
+      CLKOUT5_DIVIDE : integer := 1;
+      CLKOUT5_DUTY_CYCLE : real := 0.5;
+      CLKOUT5_PHASE : real := 0.0;
+      CLKOUT5_USE_FINE_PS : boolean := FALSE;
+      CLKOUT6_DIVIDE : integer := 1;
+      CLKOUT6_DUTY_CYCLE : real := 0.5;
+      CLKOUT6_PHASE : real := 0.0;
+      CLKOUT6_USE_FINE_PS : boolean := FALSE;
+      CLOCK_HOLD : boolean := FALSE;
+      COMPENSATION : string := "ZHOLD";
+      DIVCLK_DIVIDE : integer := 1;
+      REF_JITTER1 : real := 0.0;
+      REF_JITTER2 : real := 0.0;
+      STARTUP_WAIT : boolean := FALSE
+  );
+port (
+      CLKFBOUT             : out std_ulogic := '0';
+      CLKFBOUTB            : out std_ulogic := '0';
+      CLKFBSTOPPED         : out std_ulogic := '0';
+      CLKINSTOPPED         : out std_ulogic := '0';
+      CLKOUT0              : out std_ulogic := '0';
+      CLKOUT0B             : out std_ulogic := '0';
+      CLKOUT1              : out std_ulogic := '0';
+      CLKOUT1B             : out std_ulogic := '0';
+      CLKOUT2              : out std_ulogic := '0';
+      CLKOUT2B             : out std_ulogic := '0';
+      CLKOUT3              : out std_ulogic := '0';
+      CLKOUT3B             : out std_ulogic := '0';
+      CLKOUT4              : out std_ulogic := '0';
+      CLKOUT5              : out std_ulogic := '0';
+      CLKOUT6              : out std_ulogic := '0';
+      DO                   : out std_logic_vector (15 downto 0);
+      DRDY                 : out std_ulogic := '0';
+      LOCKED               : out std_ulogic := '0';
+      PSDONE               : out std_ulogic := '0';
+      CLKFBIN              : in std_ulogic;
+      CLKIN1               : in std_ulogic;
+      CLKIN2               : in std_ulogic;
+      CLKINSEL             : in std_ulogic;
+      DADDR                : in std_logic_vector(6 downto 0);
+      DCLK                 : in std_ulogic;
+      DEN                  : in std_ulogic;
+      DI                   : in std_logic_vector(15 downto 0);
+      DWE                  : in std_ulogic;
+      PSCLK                : in std_ulogic;
+      PSEN                 : in std_ulogic;
+      PSINCDEC             : in std_ulogic;
+      PWRDWN               : in std_ulogic;
+      RST                  : in std_ulogic
+     );
+end mmcm_calib;

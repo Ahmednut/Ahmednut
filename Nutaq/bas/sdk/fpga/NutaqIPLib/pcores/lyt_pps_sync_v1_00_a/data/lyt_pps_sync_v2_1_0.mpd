@@ -1,0 +1,51 @@
+
+BEGIN lyt_pps_sync
+
+#------------------------------------------------------------------------------
+# Peripheral Options
+#-----------------------------------------------------------------------------
+OPTION IPTYPE = PERIPHERAL
+OPTION IMP_NETLIST = TRUE
+OPTION HDL = VHDL
+OPTION IP_GROUP = Utility:USER
+OPTION PLATGEN_SYSLEVEL_UPDATE_PROC = generate_corelevel_ucf
+OPTION RUN_NGCBUILD = TRUE
+OPTION ADDITIONAL_OUTPUTS = CONSTRAINTS
+OPTION DESC = PPS Sync
+OPTION ARCH_SUPPORT_MAP = (OTHERS=DEVELOPMENT)
+
+#------------------------------------------------------------------------------
+# Bus Interfaces
+#-----------------------------------------------------------------------------
+
+#------------------------------------------------------------------------------
+# Generics for VHDL or Parameters for Verilog
+#-----------------------------------------------------------------------------
+#User Generic parameters
+PARAMETER v16_CoreId_g  = 0xCC01, DT = std_logic_vector, ASSIGNMENT = CONSTANT
+PARAMETER v16_VersNbr_g = 0x0200, DT = std_logic_vector, ASSIGNMENT = CONSTANT
+PARAMETER C_DDR_INPUT   = 0, DT = INTEGER, RANGE = (0:1), VALUES = (0=FALSE, 1=TRUE)
+
+#------------------------------------------------------------------------------
+# Ports
+#------------------------------------------------------------------------------
+# User ports
+
+PORT i_SysClk_p	       	= "", DIR = I, SIGIS = CLK
+PORT i_Clk_p	       	= "", DIR = I, SIGIS = CLK
+PORT i_Pps_p		   	= "", DIR = I
+PORT ov32_CoreIdVers_p	= "", DIR = O, VEC = [31:0]
+PORT iv32_ClkTarget_p	= "", DIR = I, VEC = [31:0] 
+PORT iv32_PpsFreq_p	    = "", DIR = I, VEC = [31:0] 
+PORT iv32_ProgDelay_p	= "", DIR = I, VEC = [31:0] 
+PORT i_CoreReset_p		= "", DIR = I   
+PORT i_RstUponRead_p	= "", DIR = I	 
+PORT i_RstAcc_p			= "", DIR = I     
+PORT i_CoreEnable_p		= "", DIR = I 
+PORT i_MovingSumEna_p	= "", DIR = I 
+PORT i_MovingSumRst_p 	= "", DIR = I 
+PORT i_DiffAccRead_p	= "", DIR = I	 
+PORT ov32_PpsCnt_p		= "", DIR = O, VEC = [31:0]
+PORT ov32_DiffAcc_p		= "", DIR = O, VEC = [31:0]
+
+END

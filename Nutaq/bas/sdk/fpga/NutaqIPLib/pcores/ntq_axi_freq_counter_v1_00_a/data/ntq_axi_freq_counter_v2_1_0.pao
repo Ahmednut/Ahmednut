@@ -1,0 +1,9 @@
+
+lib proc_common_v3_00_a  all
+lib axi_lite_ipif_v1_01_a  all
+
+lib ntq_axi_freq_counter_v1_00_a frequency_counter_hz vhdl
+lib ntq_axi_freq_counter_v1_00_a frequency_counter_mux vhdl
+lib ntq_axi_freq_counter_v1_00_a axi_freq_counter vhdl
+lib ntq_axi_freq_counter_v1_00_a user_logic vhdl
+lib ntq_axi_freq_counter_v1_00_a ntq_axi_freq_counter vhdl

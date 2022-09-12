@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<block>
+  <name>Generic Register</name>
+  <key>nutaq_generic_register</key>
+  <category>Nutaq</category>
+  <throttle>1</throttle>
+  <import>import nutaq</import>
+  <make>nutaq.generic_register($target_id,$block_priority)
+#if $address()
+self.$(id).set_address($address)
+#end if
+#if $value()
+self.$(id).set_default_value($value)
+#end if
+#if $update_rate()
+self.$(id).set_update_rate($update_rate)
+#end if
+  </make>
+  <callback>set_value($value)</callback>
+
+  <param>
+    <name>Target ID</name>
+    <key>target_id</key>
+    <type>string</type>
+  </param>
+
+  <param>
+    <name>Block Priority</name>
+    <key>block_priority</key>
+    <type>int</type>
+  </param>
+
+  <param>
+    <name>Register Address</name>
+    <key>address</key>
+	<value>0x00000000</value>
+    <type>int</type>
+    
+  </param>
+
+  <param>
+    <name>Register Value</name>
+    <key>value</key>
+    <value>0</value>
+    <type>int</type>
+  </param>
+
+  <param>
+    <name>Update Rate</name>
+    <key>update_rate</key>
+    <value>1</value>
+    <type>float</type>    
+    <hide>part</hide>
+  </param>
+
+  <check>$target_id</check>
+  <check>$address >= 0</check>
+  <check>$update_rate >= 0</check>
+  <check>$block_priority >= 0</check>
+
+  <sink>
+    <name>in</name>
+    <type>int</type>
+    <nports>$num_chan</nports>
+    <optional>1</optional>
+  </sink>
+
+  <source>
+    <name>out</name>
+    <type>int</type>
+    <nports>$num_chan</nports>
+    <optional>1</optional>
+  </source>
+
+    <doc>
+Target ID:
+Block ID of carrier board.
+
+Block Priority:
+Specify the priority of the block between all the blocks who have this parameter. It sets the block order to be executed . Priority order starts from 0. For example, the block with priority of 0 will be the first to be executed, then priority 1, then priority 2, etc. 
+
+Register Address:
+Which register address will be used by this block.
+
+Register Value:
+The value that is written initially. This can also be updated in real-time using a variable.
+
+Update Rate:
+How often to update the register. This value is in Hertz.
+    </doc>
+
+</block>

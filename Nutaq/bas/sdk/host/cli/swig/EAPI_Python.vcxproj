@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\src\adp_cli.py" />
+    <None Include="eapi.i" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\..\tools\apps\core\LoadDataToPlayback\src\LoadDataToPlayback.c" />
+    <ClCompile Include="..\..\..\..\tools\apps\core\PlaybackData\src\PlaybackData.c" />
+    <ClCompile Include="..\..\..\..\tools\apps\core\PlaybackStop\src\PlaybackStop.c" />
+    <ClCompile Include="..\..\..\..\tools\apps\core\RecordData\src\RecordData.c" />
+    <ClCompile Include="..\..\..\..\tools\apps\core\RetrieveRecordedData\src\RetrieveRecordedData.c" />
+    <ClCompile Include="..\..\api\utils\src\mac_utils.c" />
+    <ClCompile Include="..\..\api\utils\src\media_utils.c" />
+    <ClCompile Include="eapi_wrap.c" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{CEF82746-8C72-4D5F-BBD4-CF9FD754F503}</ProjectGuid>
+    <RootNamespace>Python</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>11.0.60610.1</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(ProjectDir)\..\src\</OutDir>
+    <IntDir>$(ProjectDir)\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <TargetExt>.pyd</TargetExt>
+    <TargetName>_eapi</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(ProjectDir)\..\src\</OutDir>
+    <IntDir>$(ProjectDir)\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <TargetExt>.pyd</TargetExt>
+    <TargetName>_eapi</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <PreBuildEvent>
+      <Command>swig -python -I../../api/utils/inc/  -I../../api/eapi/inc/ -I../../api/record_playback/inc -I../../api/rtdex/inc -I../../../embedded/lib/adac250_lib/inc/  -I../../../embedded/lib/adc5000_lib/inc/ -I../../../embedded/lib/aurora_lib/inc/ -I../../../embedded/lib/carrier_lib/inc -I../../../embedded/lib/lvdsxinxout_lib/inc -I../../../embedded/lib/lvds_lib/inc -I../../../embedded/lib/radio420_lib/inc -I../../../embedded/lib/mi125_lib/inc -I../../../embedded/lib/mo1000_lib/inc -I../../../embedded/lib/mi250_lib/inc -I../../../embedded/lib/adac250_lib/inc/  -I../../../embedded/lib/drivers_lib/inc/ -I../../../embedded/lib/sysmon_lib/inc/ -I../../../embedded/lib/timestamp_lib/inc/ -I../../../embedded/lib/common/inc -I../../../../tools/apps/core/PlaybackData/inc -I../../../../tools/apps/core/PlaybackStop/inc -I../../../../tools/apps/core/RecordData/inc -I../../../../tools/apps/core/LoadDataToPlayback/inc -I../../../../tools/apps/core/RetrieveRecordedData/inc eapi.i</Command>
+    </PreBuildEvent>
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>../../api/python/v2_7/inc;../../api/eapi/inc;../../api/lyt_std_lib/inc;../../api/record_playback/inc;../../api/rtdex/inc;../../api/utils/inc;../../../embedded/lib/adac250_lib/inc;../../../embedded/lib/adc5000_lib/inc;../../../embedded/lib/aurora_lib/inc;../../../embedded/lib/carrier_lib/inc;../../../embedded/lib/radio420_lib/inc;../../../embedded/lib/common/inc;../../../embedded/lib/mi125_lib/inc;../../../embedded/lib/mi250_lib/inc;../../../embedded/lib/mo1000_lib/inc;../../../embedded/lib/lvds_lib/inc;../../../embedded/lib/lvdsxinxout_lib/inc;../../../embedded/lib/sysmon_lib/inc;../../../embedded/lib/FMCEEprom_lib/inc;../../../embedded/lib/ppssync_lib/inc;../../../embedded/lib/timestamp_lib/inc;../../../embedded/lib/drivers_lib/inc;../../../../tools/apps/core/PlaybackStop/inc;../../../../tools/apps/core/PlaybackFromRAM/inc;../../../../tools/apps/core/RecordToRAM/inc;../../../../tools/apps/core/TransferFileToRAM/inc;../../../../tools/apps/core/TransferRAMToFile/inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <ProgramDataBaseFileName>$(IntDir)$(TargetName)_win64d.pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>wsock32.lib;Iphlpapi.lib;kernel32.lib;MSVCRT.LIB;python27.lib;wpcap.lib;Packet.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)_eapi.pyd</OutputFile>
+      <AdditionalLibraryDirectories>../../api/python/v2_7/lib_win64;../../api/winpcap/lib/win64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy "$(ProjectDir)\eapi.py" "$(OutDir)</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <PreBuildEvent>
+      <Command>swig -python -I../../api/utils/inc/  -I../../api/eapi/inc/ -I../../api/record_playback/inc -I../../api/rtdex/inc -I../../../embedded/lib/adac250_lib/inc/  -I../../../embedded/lib/adc5000_lib/inc/ -I../../../embedded/lib/aurora_lib/inc/ -I../../../embedded/lib/carrier_lib/inc -I../../../embedded/lib/lvdsxinxout_lib/inc -I../../../embedded/lib/lvds_lib/inc -I../../../embedded/lib/radio420_lib/inc -I../../../embedded/lib/mi125_lib/inc -I../../../embedded/lib/mo1000_lib/inc -I../../../embedded/lib/mi250_lib/inc -I../../../embedded/lib/adac250_lib/inc/  -I../../../embedded/lib/drivers_lib/inc/ -I../../../embedded/lib/sysmon_lib/inc/ -I../../../embedded/lib/timestamp_lib/inc/ -I../../../embedded/lib/common/inc -I../../../../tools/apps/core/PlaybackData/inc -I../../../../tools/apps/core/PlaybackStop/inc -I../../../../tools/apps/core/RecordData/inc -I../../../../tools/apps/core/LoadDataToPlayback/inc -I../../../../tools/apps/core/RetrieveRecordedData/inc eapi.i</Command>
+    </PreBuildEvent>
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>../../api/python/v2_7/inc;../../api/eapi/inc;../../api/lyt_std_lib/inc;../../api/record_playback/inc;../../api/rtdex/inc;../../api/utils/inc;../../../embedded/lib/adac250_lib/inc;../../../embedded/lib/adc5000_lib/inc;../../../embedded/lib/aurora_lib/inc;../../../embedded/lib/carrier_lib/inc;../../../embedded/lib/radio420_lib/inc;../../../embedded/lib/common/inc;../../../embedded/lib/mi125_lib/inc;../../../embedded/lib/mi250_lib/inc;../../../embedded/lib/mo1000_lib/inc;../../../embedded/lib/lvds_lib/inc;../../../embedded/lib/lvdsxinxout_lib/inc;../../../embedded/lib/sysmon_lib/inc;../../../embedded/lib/FMCEEprom_lib/inc;../../../embedded/lib/ppssync_lib/inc;../../../embedded/lib/timestamp_lib/inc;../../../embedded/lib/drivers_lib/inc;../../../../tools/apps/core/PlaybackStop/inc;../../../../tools/apps/core/PlaybackData/inc;../../../../tools/apps/core/RecordData/inc;../../../../tools/apps/core/LoadDataToPlayback/inc;../../../../tools/apps/core/RetrieveRecordedData/inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(IntDir)$(TargetName)_win64.pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat />
+    </ClCompile>
+    <Link>
+      <AdditionalOptions>"..\..\lib64\eapi_win64.lib" "..\..\lib64\recplay_win64.lib" "..\..\lib64\rtdex_win64.lib" "..\..\lib64\rtdexsync_win64.lib" "..\..\lib64\rtdexts_win64.lib" %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>wsock32.lib;Iphlpapi.lib;kernel32.lib;MSVCRT.LIB;python27.lib;wpcap.lib;Packet.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)_eapi.pyd</OutputFile>
+      <AdditionalLibraryDirectories>../../api/python/v2_7/lib_win64;../../api/winpcap/lib/win64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy "$(ProjectDir)\eapi.py" "$(OutDir)</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

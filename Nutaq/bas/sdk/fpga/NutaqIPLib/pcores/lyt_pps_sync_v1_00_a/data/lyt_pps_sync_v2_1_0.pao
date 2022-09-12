@@ -1,0 +1,6 @@
+
+lib lyt_pps_sync_v1_00_a lyt_pps_sync vhdl
+lib lyt_pps_sync_v1_00_a bus_syncer vhdl
+lib lyt_pps_sync_v1_00_a syncer vhdl
+lib lyt_pps_sync_v1_00_a progdelay vhdl
+

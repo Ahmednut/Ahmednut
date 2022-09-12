@@ -1,0 +1,7 @@
+##############################################################################
+## Filename:          C:\projets\adp\examples_perseus6010\perseus6010_rtdex_lvds_loopBack\edk\pcores/lyt_axi_lvds_gluelogic_v1_00_a/data/lyt_axi_lvds_gluelogic_v2_1_0.pao
+## Description:       Peripheral Analysis Order
+## Date:              Tue Nov 13 12:08:40 2012 (by Create and Import Peripheral Wizard)
+##############################################################################
+
+lib lyt_axi_lvds_gluelogic_v1_00_a lyt_axi_lvds_gluelogic vhdl

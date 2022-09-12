@@ -1,0 +1,2 @@
+lib lyt_lvds_sync_v1_00_a lyt_lvds_sync vhdl
+lib lyt_lvds_sync_v1_00_a io_dff vhdl

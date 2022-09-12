@@ -1,0 +1,56 @@
+##############################################################################
+## Filename:          pcores/ntq_axi_fmcomms3_v1_00_a/data/ntq_axi_fmcomms3_v2_1_0.pao
+## Description:       Peripheral Analysis Order
+## Date:              Fri Aug 26 11:12:50 2011 (by Create and Import Peripheral Wizard)
+##############################################################################
+
+# SPI
+lib proc_common_v3_00_a                             all
+                    
+lib axi_lite_ipif_v1_01_a                           all
+lib interrupt_control_v2_01_a                       all
+
+lib ntq_axi_freq_counter_v1_00_a frequency_counter_mux vhdl
+lib ntq_axi_freq_counter_v1_00_a frequency_counter_hz vhdl
+
+lib ntq_axi_radio640_v1_00_a radio640_fifo16_49b_async.vhd vhdl
+lib ntq_axi_radio640_v1_00_a radio640_fifo16_50b_async.vhd vhdl
+lib ntq_axi_radio640_v1_00_a ComplexMult_TX_Calibre verilog
+lib ntq_axi_radio640_v1_00_a ComplexMult_RX_Calibre verilog
+lib ntq_axi_radio640_v1_00_a spi_register vhdl
+lib ntq_axi_radio640_v1_00_a trxclk_spi vhdl
+lib ntq_axi_radio640_v1_00_a rfatt_spi vhdl
+lib ntq_axi_radio640_v1_00_a dacosc_spi vhdl
+lib ntq_axi_radio640_v1_00_a syncer vhdl
+lib ntq_axi_radio640_v1_00_a bus_syncer vhdl
+lib ntq_axi_radio640_v1_00_a low_high_latch vhdl
+lib ntq_axi_radio640_v1_00_a radio640_io vhdl
+lib ntq_axi_radio640_v1_00_a radio640_regs vhdl
+lib ntq_axi_radio640_v1_00_a ad_datafmt verilog
+lib ntq_axi_radio640_v1_00_a ad_dcfilter verilog
+lib ntq_axi_radio640_v1_00_a ad_iqcor verilog
+lib ntq_axi_radio640_v1_00_a ad_lvds_clk verilog
+lib ntq_axi_radio640_v1_00_a ad_lvds_in verilog
+lib ntq_axi_radio640_v1_00_a ad_lvds_out verilog
+lib ntq_axi_radio640_v1_00_a ad_mul verilog
+lib ntq_axi_radio640_v1_00_a ad_pnmon verilog
+lib ntq_axi_radio640_v1_00_a ad_rst verilog
+lib ntq_axi_radio640_v1_00_a ntq_axi_radio640 verilog
+lib ntq_axi_radio640_v1_00_a axi_ad9361 verilog
+lib ntq_axi_radio640_v1_00_a sync_logic verilog
+lib ntq_axi_radio640_v1_00_a axi_ad9361_dev_if verilog
+lib ntq_axi_radio640_v1_00_a axi_ad9361_rx verilog
+lib ntq_axi_radio640_v1_00_a axi_ad9361_rx_channel verilog
+lib ntq_axi_radio640_v1_00_a axi_ad9361_rx_pnmon verilog
+lib ntq_axi_radio640_v1_00_a axi_ad9361_tx verilog
+lib ntq_axi_radio640_v1_00_a axi_ad9361_tx_channel verilog
+lib ntq_axi_radio640_v1_00_a up_adc_channel verilog
+lib ntq_axi_radio640_v1_00_a up_adc_common verilog
+lib ntq_axi_radio640_v1_00_a up_axi verilog
+lib ntq_axi_radio640_v1_00_a up_clock_mon verilog
+lib ntq_axi_radio640_v1_00_a up_dac_channel verilog
+lib ntq_axi_radio640_v1_00_a up_dac_common verilog
+lib ntq_axi_radio640_v1_00_a up_delay_cntrl verilog
+lib ntq_axi_radio640_v1_00_a up_drp_cntrl verilog
+lib ntq_axi_radio640_v1_00_a up_xfer_cntrl verilog
+lib ntq_axi_radio640_v1_00_a up_xfer_status verilog

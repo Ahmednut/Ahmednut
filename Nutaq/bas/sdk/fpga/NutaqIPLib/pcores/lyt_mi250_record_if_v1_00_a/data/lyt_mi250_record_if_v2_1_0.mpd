@@ -1,0 +1,67 @@
+#------------------------------------------------------------------------------
+# Filename:        lyt_mi250_record_if_v1_00a.mpd
+# Description:     Microprocessor Peripheral Description
+# Designed by:    Khalid Bensadek
+# Date:            2012-08
+# Copyright (c) 2001-2012 LYRtech RD Inc.  All rights reserved.
+#
+# LYRtech RD Inc.
+#------------------------------------------------------------------------------
+BEGIN lyt_mi250_record_if
+
+## Peripheral Options
+OPTION IPTYPE = PERIPHERAL
+OPTION IMP_NETLIST = TRUE
+OPTION RUN_NGCBUILD = TRUE
+OPTION HDL = VHDL
+OPTION IP_GROUP = Utility:MICROBLAZE:PPC
+OPTION DESC = MI250 Infterface to Nutaq Record-Playback ip core
+OPTION ARCH_SUPPORT_MAP = (OTHERS=DEVELOPMENT)
+
+
+## Generics for VHDL or Parameters for Verilog
+#PARAMETER
+
+# User interfaces
+IO_INTERFACE IO_IF = MI250_IF, IO_TYPE = GPIO
+IO_INTERFACE IO_IF = RECORD_IF, IO_TYPE = GPIO
+IO_INTERFACE IO_IF = CONTROL_IF, IO_TYPE = GPIO
+
+## User Ports
+PORT i_Reset_p			        = "", DIR = I, SIGIS = RST, IO_IF = CONTROL_IF
+PORT i_SoftOrExternalTriggSel_p = "", DIR = I, IO_IF = CONTROL_IF
+PORT iv2_MuxSel_p               = "", DIR = I, VEC = [1:0], IO_IF = CONTROL_IF
+PORT i_SoftTrigger_p            = "", DIR = I, IO_IF = CONTROL_IF
+
+PORT i_Clk_p		            = "", DIR = I, SIGIS = CLK, IO_IF = MI250_IF
+PORT iv14_AdcDataCh1_p          = "", DIR = I, VEC = [13:0], IO_IF = MI250_IF
+PORT iv14_AdcDataCh2_p          = "", DIR = I, VEC = [13:0], IO_IF = MI250_IF
+PORT iv14_AdcDataCh3_p          = "", DIR = I, VEC = [13:0], IO_IF = MI250_IF
+PORT iv14_AdcDataCh4_p          = "", DIR = I, VEC = [13:0], IO_IF = MI250_IF
+PORT iv14_AdcDataCh5_p          = "", DIR = I, VEC = [13:0], IO_IF = MI250_IF
+PORT iv14_AdcDataCh6_p          = "", DIR = I, VEC = [13:0], IO_IF = MI250_IF
+PORT iv14_AdcDataCh7_p          = "", DIR = I, VEC = [13:0], IO_IF = MI250_IF
+PORT iv14_AdcDataCh8_p          = "", DIR = I, VEC = [13:0], IO_IF = MI250_IF
+PORT iv14_AdcDataCh9_p          = "", DIR = I, VEC = [13:0], IO_IF = MI250_IF
+PORT iv14_AdcDataCh10_p         = "", DIR = I, VEC = [13:0], IO_IF = MI250_IF
+PORT iv14_AdcDataCh11_p         = "", DIR = I, VEC = [13:0], IO_IF = MI250_IF
+PORT iv14_AdcDataCh12_p         = "", DIR = I, VEC = [13:0], IO_IF = MI250_IF
+PORT iv14_AdcDataCh13_p         = "", DIR = I, VEC = [13:0], IO_IF = MI250_IF
+PORT iv14_AdcDataCh14_p         = "", DIR = I, VEC = [13:0], IO_IF = MI250_IF
+PORT iv14_AdcDataCh15_p         = "", DIR = I, VEC = [13:0], IO_IF = MI250_IF
+PORT iv14_AdcDataCh16_p         = "", DIR = I, VEC = [13:0], IO_IF = MI250_IF
+PORT i_AdcValid_p               = "", DIR = I, IO_IF = MI250_IF
+PORT i_ExternalTrigger_p        = "", DIR = I , IO_IF = MI250_IF
+
+PORT ov16_RecordData1_p	        = "", DIR = O, VEC = [15:0], IO_IF = RECORD_IF
+PORT ov16_RecordData2_p	        = "", DIR = O, VEC = [15:0], IO_IF = RECORD_IF
+PORT ov16_RecordData3_p	        = "", DIR = O, VEC = [15:0], IO_IF = RECORD_IF
+PORT ov16_RecordData4_p	        = "", DIR = O, VEC = [15:0], IO_IF = RECORD_IF
+PORT ov16_RecordData5_p	        = "", DIR = O, VEC = [15:0], IO_IF = RECORD_IF
+PORT ov16_RecordData6_p	        = "", DIR = O, VEC = [15:0], IO_IF = RECORD_IF
+PORT ov16_RecordData7_p	        = "", DIR = O, VEC = [15:0], IO_IF = RECORD_IF
+PORT ov16_RecordData8_p	        = "", DIR = O, VEC = [15:0], IO_IF = RECORD_IF
+PORT o_RecordTrigger_p          = "", DIR = O, IO_IF = RECORD_IF
+PORT o_RecordValid_p            = "", DIR = O, IO_IF = RECORD_IF
+
+END

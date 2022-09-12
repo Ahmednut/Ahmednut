@@ -1,0 +1,17 @@
+##############################################################################
+## Filename:          lyt_plb_adac250_v2_1_0.pao
+## Description:       Peripheral Analysis Order
+## Date:              Wed Oct 28 19:56:15 2009 (by Create and Import Peripheral Wizard)
+##############################################################################
+
+
+lib proc_common_v3_00_a  all
+lib axi_lite_ipif_v1_01_a  all
+
+lib lyt_axi_adac250_v1_00_a adac250_wrapper_p vhdl
+lib lyt_axi_adac250_v1_00_a axi_adac250 vhdl
+lib lyt_axi_adac250_v1_00_a user_logic vhdl
+lib lyt_axi_adac250_v1_00_a lyt_axi_adac250 vhdl
+lib lyt_axi_adac250_v1_00_a mmcm_calib_e vhdl
+lib lyt_axi_adac250_v1_00_a mmcm_calib_rtl_a vhdl
+lib lyt_axi_adac250_v1_00_a mmcm_phase_calibration vhdl

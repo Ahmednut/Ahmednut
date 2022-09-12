@@ -1,0 +1,9 @@
+##############################################################################
+## Filename:          C:\Users\eric.dube\Desktop\projets\adp\examples_perseus6010\perseus6010_default_system\edk\pcores/lyt_axi_lvds_io_v1_00_a/data/lyt_axi_lvds_io_v2_1_0.bbd
+## Description:       Black Box Definition
+## Date:              Tue Nov 06 11:18:41 2012 (by Create and Import Peripheral Wizard)
+##############################################################################
+
+Files
+################################################################################
+fifo14w16d.ngc

@@ -1,0 +1,10 @@
+##############################################################################
+## Filename:          C:/CVS_Files/projets/bas/examples/mo1000_mi250/perseus611x/bsdk_pcie/pcores/ntq_gpio_v1_00_a/data/ntq_gpio_v2_1_0.pao
+## Description:       Peripheral Analysis Order
+## Date:              Fri Feb 19 15:23:42 2016 (by Create and Import Peripheral Wizard)
+##############################################################################
+
+lib proc_common_v3_00_a  all 
+lib axi_lite_ipif_v1_01_a  all 
+lib ntq_gpio_v1_00_a user_logic verilog
+lib ntq_gpio_v1_00_a ntq_gpio vhdl

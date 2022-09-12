@@ -1,0 +1,113 @@
+
+BEGIN lyt_rtdexsync_test
+
+#------------------------------------------------------------------------------
+# Peripheral Options
+#-----------------------------------------------------------------------------
+OPTION IPTYPE = PERIPHERAL
+OPTION IMP_NETLIST = TRUE
+OPTION HDL = VHDL
+OPTION IP_GROUP = Utility:USER
+OPTION PLATGEN_SYSLEVEL_UPDATE_PROC = generate_corelevel_ucf
+OPTION RUN_NGCBUILD = TRUE
+OPTION ADDITIONAL_OUTPUTS = CONSTRAINTS
+OPTION DESC = RTDEx Test
+OPTION ARCH_SUPPORT_MAP = (OTHERS=DEVELOPMENT)
+
+#------------------------------------------------------------------------------
+# Generics for VHDL or Parameters for Verilog
+#-----------------------------------------------------------------------------
+PARAMETER C_RTDEX_RX_NUMER_OF_CHANNELS = 1, DT = INTEGER, RANGE = (1:8)
+PARAMETER C_RTDEX_TX_NUMER_OF_CHANNELS = 1, DT = INTEGER, RANGE = (1:8)
+PARAMETER C_RTDEX_DATA_WIDTH = 32, DT = INTEGER, RANGE = (1:32)
+
+#------------------------------------------------------------------------------
+# Ports
+#------------------------------------------------------------------------------
+# User ports
+IO_INTERFACE IO_IF = CONTROL_IF, IO_TYPE = GPIO
+IO_INTERFACE IO_IF = CHANNEL0_IF, IO_TYPE = GPIO
+IO_INTERFACE IO_IF = CHANNEL1_IF, IO_TYPE = GPIO
+IO_INTERFACE IO_IF = CHANNEL2_IF, IO_TYPE = GPIO
+IO_INTERFACE IO_IF = CHANNEL3_IF, IO_TYPE = GPIO
+IO_INTERFACE IO_IF = CHANNEL4_IF, IO_TYPE = GPIO
+IO_INTERFACE IO_IF = CHANNEL5_IF, IO_TYPE = GPIO
+IO_INTERFACE IO_IF = CHANNEL6_IF, IO_TYPE = GPIO
+IO_INTERFACE IO_IF = CHANNEL7_IF, IO_TYPE = GPIO
+
+PORT i_Clk_p           = "", DIR = I, SIGIS = CLK
+PORT i_Rst_p           = "", DIR = I, SIGIS = RST
+
+PORT iv64_Time_p       = "", DIR = I, VEC = [63:0]
+
+PORT i_IndWrEn_p           = "", DIR = IN, IO_IF = CONTROL_IF
+PORT iv8_IndAddr_p         = "", DIR = IN, VEC = [7:0], IO_IF = CONTROL_IF
+PORT iv32_IndWrReg_p       = "", DIR = IN, VEC = [31:0], IO_IF = CONTROL_IF
+PORT ov32_IndRdReg_p       = "", DIR = OUT, VEC = [31:0], IO_IF = CONTROL_IF
+
+PORT i_RxReadyCh0_p        = "", DIR = I, IO_IF = CHANNEL0_IF
+PORT o_RxReCh0_p           = "", DIR = O, IO_IF = CHANNEL0_IF
+PORT iv_RxDataCh0_p        = "", DIR = I, VEC = [(C_RTDEX_DATA_WIDTH-1):0], IO_IF = CHANNEL0_IF
+PORT i_RxDataValidCh0_p    = "", DIR = I, IO_IF = CHANNEL0_IF
+
+PORT i_TxReadyCh0_p        = "", DIR = I, IO_IF = CHANNEL0_IF
+PORT o_TxWeCh0_p           = "", DIR = O, IO_IF = CHANNEL0_IF
+PORT ov_TxDataCh0_p        = "", DIR = O, VEC = [(C_RTDEX_DATA_WIDTH-1):0], IO_IF = CHANNEL0_IF
+
+PORT i_RxReadyCh1_p        = "", DIR = I, IO_IF = CHANNEL1_IF
+PORT o_RxReCh1_p           = "", DIR = O, IO_IF = CHANNEL1_IF
+PORT iv_RxDataCh1_p        = "", DIR = I, VEC = [(C_RTDEX_DATA_WIDTH-1):0], IO_IF = CHANNEL1_IF
+PORT i_RxDataValidCh1_p    = "", DIR = I, IO_IF = CHANNEL1_IF
+PORT i_TxReadyCh1_p        = "", DIR = I, IO_IF = CHANNEL1_IF
+PORT o_TxWeCh1_p           = "", DIR = O, IO_IF = CHANNEL1_IF
+PORT ov_TxDataCh1_p        = "", DIR = O, VEC = [(C_RTDEX_DATA_WIDTH-1):0], IO_IF = CHANNEL1_IF
+
+PORT i_RxReadyCh2_p        = "", DIR = I, IO_IF = CHANNEL2_IF
+PORT o_RxReCh2_p           = "", DIR = O, IO_IF = CHANNEL2_IF
+PORT iv_RxDataCh2_p        = "", DIR = I, VEC = [(C_RTDEX_DATA_WIDTH-1):0], IO_IF = CHANNEL2_IF
+PORT i_RxDataValidCh2_p    = "", DIR = I, IO_IF = CHANNEL2_IF
+PORT i_TxReadyCh2_p        = "", DIR = I, IO_IF = CHANNEL2_IF
+PORT o_TxWeCh2_p           = "", DIR = O, IO_IF = CHANNEL2_IF
+PORT ov_TxDataCh2_p        = "", DIR = O, VEC = [(C_RTDEX_DATA_WIDTH-1):0], IO_IF = CHANNEL2_IF
+
+PORT i_RxReadyCh3_p        = "", DIR = I, IO_IF = CHANNEL3_IF
+PORT o_RxReCh3_p           = "", DIR = O, IO_IF = CHANNEL3_IF
+PORT iv_RxDataCh3_p        = "", DIR = I, VEC = [(C_RTDEX_DATA_WIDTH-1):0], IO_IF = CHANNEL3_IF
+PORT i_RxDataValidCh3_p    = "", DIR = I, IO_IF = CHANNEL3_IF
+PORT i_TxReadyCh3_p        = "", DIR = I, IO_IF = CHANNEL3_IF
+PORT o_TxWeCh3_p           = "", DIR = O, IO_IF = CHANNEL3_IF
+PORT ov_TxDataCh3_p        = "", DIR = O, VEC = [(C_RTDEX_DATA_WIDTH-1):0], IO_IF = CHANNEL3_IF
+
+PORT i_RxReadyCh4_p        = "", DIR = I, IO_IF = CHANNEL4_IF
+PORT o_RxReCh4_p           = "", DIR = O, IO_IF = CHANNEL4_IF
+PORT iv_RxDataCh4_p        = "", DIR = I, VEC = [(C_RTDEX_DATA_WIDTH-1):0], IO_IF = CHANNEL4_IF
+PORT i_RxDataValidCh4_p    = "", DIR = I, IO_IF = CHANNEL4_IF
+PORT i_TxReadyCh4_p        = "", DIR = I, IO_IF = CHANNEL4_IF
+PORT o_TxWeCh4_p           = "", DIR = O, IO_IF = CHANNEL4_IF
+PORT ov_TxDataCh4_p        = "", DIR = O, VEC = [(C_RTDEX_DATA_WIDTH-1):0], IO_IF = CHANNEL4_IF
+
+PORT i_RxReadyCh5_p        = "", DIR = I, IO_IF = CHANNEL5_IF
+PORT o_RxReCh5_p           = "", DIR = O, IO_IF = CHANNEL5_IF
+PORT iv_RxDataCh5_p        = "", DIR = I, VEC = [(C_RTDEX_DATA_WIDTH-1):0], IO_IF = CHANNEL5_IF
+PORT i_RxDataValidCh5_p    = "", DIR = I, IO_IF = CHANNEL5_IF
+PORT i_TxReadyCh5_p        = "", DIR = I, IO_IF = CHANNEL5_IF
+PORT o_TxWeCh5_p           = "", DIR = O, IO_IF = CHANNEL5_IF
+PORT ov_TxDataCh5_p        = "", DIR = O, VEC = [(C_RTDEX_DATA_WIDTH-1):0], IO_IF = CHANNEL5_IF
+
+PORT i_RxReadyCh6_p        = "", DIR = I, IO_IF = CHANNEL6_IF
+PORT o_RxReCh6_p           = "", DIR = O, IO_IF = CHANNEL6_IF
+PORT iv_RxDataCh6_p        = "", DIR = I, VEC = [(C_RTDEX_DATA_WIDTH-1):0], IO_IF = CHANNEL6_IF
+PORT i_RxDataValidCh6_p    = "", DIR = I, IO_IF = CHANNEL6_IF
+PORT i_TxReadyCh6_p        = "", DIR = I, IO_IF = CHANNEL6_IF
+PORT o_TxWeCh6_p           = "", DIR = O, IO_IF = CHANNEL6_IF
+PORT ov_TxDataCh6_p        = "", DIR = O, VEC = [(C_RTDEX_DATA_WIDTH-1):0], IO_IF = CHANNEL6_IF
+
+PORT i_RxReadyCh7_p        = "", DIR = I, IO_IF = CHANNEL7_IF
+PORT o_RxReCh7_p           = "", DIR = O, IO_IF = CHANNEL7_IF
+PORT iv_RxDataCh7_p        = "", DIR = I, VEC = [(C_RTDEX_DATA_WIDTH-1):0], IO_IF = CHANNEL7_IF
+PORT i_RxDataValidCh7_p    = "", DIR = I, IO_IF = CHANNEL7_IF
+PORT i_TxReadyCh7_p        = "", DIR = I, IO_IF = CHANNEL7_IF
+PORT o_TxWeCh7_p           = "", DIR = O, IO_IF = CHANNEL7_IF
+PORT ov_TxDataCh7_p        = "", DIR = O, VEC = [(C_RTDEX_DATA_WIDTH-1):0], IO_IF = CHANNEL7_IF
+
+END

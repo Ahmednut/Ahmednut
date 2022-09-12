@@ -1,0 +1,44 @@
+
+BEGIN ntq_timestamp
+
+#------------------------------------------------------------------------------
+# Peripheral Options
+#-----------------------------------------------------------------------------
+OPTION IPTYPE = PERIPHERAL
+OPTION IMP_NETLIST = TRUE
+OPTION HDL = VHDL
+OPTION IP_GROUP = Utility:USER
+OPTION PLATGEN_SYSLEVEL_UPDATE_PROC = generate_corelevel_ucf
+OPTION RUN_NGCBUILD = TRUE
+OPTION ADDITIONAL_OUTPUTS = CONSTRAINTS
+OPTION DESC = Timestamp generator
+OPTION ARCH_SUPPORT_MAP = (OTHERS=DEVELOPMENT)
+
+#------------------------------------------------------------------------------
+# Bus Interfaces
+#-----------------------------------------------------------------------------
+
+#------------------------------------------------------------------------------
+# Generics for VHDL or Parameters for Verilog
+#-----------------------------------------------------------------------------
+#User Generic params
+PARAMETER v16_CoreId_g  = 0xCC03, DT = std_logic_vector, ASSIGNMENT = CONSTANT
+PARAMETER v16_VersNbr_g = 0x0100, DT = std_logic_vector, ASSIGNMENT = CONSTANT
+
+#------------------------------------------------------------------------------
+# Ports
+#------------------------------------------------------------------------------
+# User ports
+
+PORT i_SysClk_p             = "", DIR = I, SIGIS = CLK
+PORT i_UserClk_p            = "", DIR = I, SIGIS = CLK
+PORT i_Pps_p                = "", DIR = I
+PORT ov32_CoreIdVers_p      = "", DIR = O, VEC = [31:0]
+PORT i_CoreReset_p          = "", DIR = I   
+PORT i_SetTime_p            = "", DIR = I
+PORT i_LatchTime_p          = "", DIR = I
+PORT iv64_TimeStamp_p       = "", DIR = I, VEC = [63:0] 
+PORT ov64_UserTimeStamp_p   = "", DIR = O, VEC = [63:0]
+PORT ov64_SysTimeStamp_p    = "", DIR = O, VEC = [63:0]
+
+END

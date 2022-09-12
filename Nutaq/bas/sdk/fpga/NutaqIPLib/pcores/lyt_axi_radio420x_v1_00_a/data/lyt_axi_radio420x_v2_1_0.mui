@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!--
+############################################################
+# GUI configuaration file
+# Created by Xilinx
+# Modified by Nutaq
+############################################################
+-->
+
+<!DOCTYPE doc SYSTEM "../../ipdialog.dtd" [
+<!-- -->	
+	<!ENTITY C_FMCRADIO_CH2 '
+	<widget id="C_FMCRADIO_CH2">
+		<key>C_FMCRADIO_CH2</key>
+		<label>FMC Radio Channel 2</label>
+		<tip>Use this option if this is the second Radio420x board (Stacked over the first one)</tip>
+	</widget>
+	'>
+	<!ENTITY C_FAMILY '
+	<widget id="C_FAMILY">
+		<key>C_FAMILY</key>
+		<label>Device Family</label>
+		<tip></tip>
+	</widget>
+	'>
+	<!ENTITY C_DPHASE_TIMEOUT '
+	<widget id="C_DPHASE_TIMEOUT">
+		<key>C_DPHASE_TIMEOUT</key>
+		<label>Data Phase Timeout</label>
+		<tip></tip>
+	</widget>
+	'>
+	<!ENTITY C_USE_WSTRB '
+	<widget id="C_USE_WSTRB">
+		<key>C_USE_WSTRB</key>
+		<label>Use Byte Enable (Write Strobe)</label>
+		<tip></tip>
+	</widget>
+	'>
+	<!ENTITY C_S_AXI_MIN_SIZE '
+	<widget id="C_S_AXI_MIN_SIZE">
+		<key>C_S_AXI_MIN_SIZE</key>
+		<label>AXI Address Minimum Size</label>
+		<tip></tip>
+	</widget>
+	'>
+	<!ENTITY C_BASEADDR '
+	<widget id="C_BASEADDR">
+		<key>C_BASEADDR</key>
+		<label>AXI Base Address </label>
+		<tip></tip>
+	</widget>
+	'>
+	<!ENTITY C_HIGHADDR '
+	<widget id="C_HIGHADDR">
+		<key>C_HIGHADDR</key>
+		<label>AXI High Address</label>
+		<tip></tip>
+	</widget>
+	'>
+	<!ENTITY C_S_AXI_DATA_WIDTH '
+	<widget id="C_S_AXI_DATA_WIDTH">
+		<key>C_S_AXI_DATA_WIDTH</key>
+		<label>AXI Data Width</label>
+		<tip></tip>
+	</widget>
+	'>
+	<!ENTITY C_S_AXI_ADDR_WIDTH '
+	<widget id="C_S_AXI_ADDR_WIDTH">
+		<key>C_S_AXI_ADDR_WIDTH</key>
+		<label>AXI Address Width</label>
+		<tip></tip>
+	</widget>
+	'>
+	    <!ENTITY C_S_AXI_PROTOCOL '
+		<widget id="C_S_AXI_PROTOCOL">
+		<key>C_S_AXI_PROTOCOL</key>
+		<label>AXI4LITE protocol</label>
+		<tip></tip>
+	    </widget>
+	'>	
+]>
+
+<doc>
+	<view id="User">
+        <display>User</display>
+        <group id="User">
+            <display>User</display>
+            <item>&C_FMCRADIO_CH2;</item>            
+        </group>        
+    </view>	
+	<view id="System">
+		<display>System</display>
+		<group id="Addresses">
+			<display>Addresses</display>
+			<item>&C_BASEADDR;</item>
+			<item>&C_HIGHADDR;</item>
+		</group>
+		<group id="AXI">
+			<display>AXI</display>
+			<item>&C_S_AXI_DATA_WIDTH;</item>
+			<item>&C_S_AXI_ADDR_WIDTH;</item>
+			<item>&C_S_AXI_PROTOCOL;</item>
+			<item>&C_S_AXI_MIN_SIZE;</item>
+			<item>&C_USE_WSTRB;</item>
+			<item>&C_DPHASE_TIMEOUT;</item>
+		</group>
+		<group id="Hidden">
+			<display>Hidden</display>
+			<item>&C_FAMILY;</item>
+		</group>
+	</view>
+</doc>

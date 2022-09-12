@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\inc\bas_debug.h" />
+    <ClInclude Include="..\inc\bas_error.h" />
+    <ClInclude Include="..\inc\bas_time.h" />
+    <ClInclude Include="..\inc\cce.h" />
+    <ClInclude Include="..\inc\connection_state.h" />
+    <ClInclude Include="..\inc\eapi.h" />
+    <ClInclude Include="..\inc\eapi_adac250.h" />
+    <ClInclude Include="..\inc\eapi_adc5000.h" />
+    <ClInclude Include="..\inc\eapi_aurora.h" />
+    <ClInclude Include="..\inc\eapi_carrier.h" />
+    <ClInclude Include="..\inc\eapi_fmcvita.h" />
+    <ClInclude Include="..\inc\eapi_lvds.h" />
+    <ClInclude Include="..\inc\eapi_lvdsxinxout.h" />
+    <ClInclude Include="..\inc\eapi_mi125.h" />
+    <ClInclude Include="..\inc\eapi_mi250.h" />
+    <ClInclude Include="..\inc\eapi_mo1000.h" />
+    <ClInclude Include="..\inc\eapi_osconfig.h" />
+    <ClInclude Include="..\inc\eapi_ppssync.h" />
+    <ClInclude Include="..\inc\eapi_radio420.h" />
+    <ClInclude Include="..\inc\eapi_serialize.h" />
+    <ClInclude Include="..\inc\eapi_sysmon.h" />
+    <ClInclude Include="..\inc\eapi_timestamp.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\..\embedded\lib\adac250_lib\src\adac250_pll.c" />
+    <ClCompile Include="..\..\..\..\embedded\lib\adac250_lib\src\adac250_serialize.c" />
+    <ClCompile Include="..\..\..\..\embedded\lib\adc5000_lib\src\ad9517.c" />
+    <ClCompile Include="..\..\..\..\embedded\lib\adc5000_lib\src\adc5000_serialize.c" />
+    <ClCompile Include="..\..\..\..\embedded\lib\mi125_lib\src\mi125_serialize.c" />
+    <ClCompile Include="..\..\..\..\embedded\lib\mi250_lib\src\mi250_pll.c" />
+    <ClCompile Include="..\..\..\..\embedded\lib\mi250_lib\src\mi250_serialize.c" />
+    <ClCompile Include="..\..\..\..\embedded\lib\radio420_lib\src\fmcradio_serialize.c" />
+    <ClCompile Include="..\..\..\..\embedded\lib\radio420_lib\src\fmc_radio.c" />
+    <ClCompile Include="..\..\..\..\embedded\lib\radio420_lib\src\lms6002.c" />
+    <ClCompile Include="..\..\..\..\embedded\lib\radio420_lib\src\radio420_cdce62005.c" />
+    <ClCompile Include="..\..\..\..\embedded\lib\radio640_lib\src\Radio640Serialize.c" />
+    <ClCompile Include="..\src\bas_error.c" />
+    <ClCompile Include="..\src\bas_time.c" />
+    <ClCompile Include="..\src\connection_state.c" />
+    <ClCompile Include="..\src\eapi.c" />
+    <ClCompile Include="..\src\eapi_adac250.c" />
+    <ClCompile Include="..\src\eapi_adc5000.c" />
+    <ClCompile Include="..\src\eapi_aurora.c" />
+    <ClCompile Include="..\src\eapi_carrier.c" />
+    <ClCompile Include="..\src\eapi_fmcvita.c" />
+    <ClCompile Include="..\src\eapi_lvds.c" />
+    <ClCompile Include="..\src\eapi_lvdsxinxout.c" />
+    <ClCompile Include="..\src\eapi_mi125.c" />
+    <ClCompile Include="..\src\eapi_mi250.c" />
+    <ClCompile Include="..\src\eapi_mo1000.c" />
+    <ClCompile Include="..\src\eapi_osconfig.c" />
+    <ClCompile Include="..\src\eapi_ppssync.c" />
+    <ClCompile Include="..\src\eapi_radio420.c" />
+    <ClCompile Include="..\src\eapi_radio640.c" />
+    <ClCompile Include="..\src\eapi_serialize.c" />
+    <ClCompile Include="..\src\eapi_sysmon.c" />
+    <ClCompile Include="..\src\eapi_timestamp.c" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{4FD12E59-E62A-473A-9671-06449D4BA1DB}</ProjectGuid>
+    <RootNamespace>eapi</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>11.0.60610.1</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(ProjectDir)\..\..\..\lib64\</OutDir>
+    <IntDir>$(ProjectDir)\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <TargetName>$(ProjectName)_win64d</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(ProjectDir)\..\..\..\lib64\</OutDir>
+    <IntDir>$(ProjectDir)\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <TargetName>$(ProjectName)_win64</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>../inc;../../../../embedded/lib/adac250_lib/inc;../../../../embedded/lib/adc5000_lib/inc;../../../../embedded/lib/aurora_lib/inc;../../../../embedded/lib/carrier_lib/inc;../../../../embedded/lib/common/inc;../../../../embedded/lib/drivers_lib/inc;../../../../embedded/lib/FMCEEprom_lib/inc;../../../../embedded/lib/lvds_lib/inc;../../../../embedded/lib/lvdsxinxout_lib/inc;../../../../embedded/lib/mi125_lib/inc;../../../../embedded/lib/mi250_lib/inc;../../../../embedded/lib/mo1000_lib/inc;../../../../embedded/lib/ppssync_lib/inc;../../../../embedded/lib/radio420_lib/inc;../../../../embedded/lib/sysmon_lib/inc;../../../../embedded/lib/timestamp_lib/inc;../../../../embedded/lib/radio640_lib/inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;ONLY_CALCULATE;__ONLY_CALCULATE__;__EAPI_BUILD__;_MODULE_IDENT_;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <ProgramDataBaseFileName>$(IntDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(projectName)_win64d.lib</OutputFile>
+    </Lib>
+    <PostBuildEvent>
+      <Command>copy "$(IntDir)$(TargetName).pdb" "$(OutDir)$(TargetName).pdb"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <AdditionalIncludeDirectories>../../lyt_std_lib/inc;../inc;../../perseus601x_lib/inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <ProgramDataBaseFileName>$(IntDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat />
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(projectName)_win32.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <AdditionalIncludeDirectories>../inc;../../../../embedded/lib/adac250_lib/inc;../../../../embedded/lib/adc5000_lib/inc;../../../../embedded/lib/aurora_lib/inc;../../../../embedded/lib/carrier_lib/inc;../../../../embedded/lib/common/inc;../../../../embedded/lib/drivers_lib/inc;../../../../embedded/lib/FMCEEprom_lib/inc;../../../../embedded/lib/lvds_lib/inc;../../../../embedded/lib/lvdsxinxout_lib/inc;../../../../embedded/lib/mi125_lib/inc;../../../../embedded/lib/mi250_lib/inc;../../../../embedded/lib/mo1000_lib/inc;../../../../embedded/lib/ppssync_lib/inc;../../../../embedded/lib/radio420_lib/inc;../../../../embedded/lib/sysmon_lib/inc;../../../../embedded/lib/timestamp_lib/inc;../../../../embedded/lib/radio640_lib/inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;ONLY_CALCULATE;__ONLY_CALCULATE__;__EAPI_BUILD__;_MODULE_IDENT_;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(IntDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <XMLDocumentationFileName>$(IntDir)</XMLDocumentationFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat />
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(ProjectName)_win64.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,21 @@
+##############################################################################
+## Filename:          C:\Users\eric.dube\Desktop\projets\adp\examples_perseus6010\perseus6010_default_system\edk\pcores/lyt_axi_lvds_io_v1_00_a/data/lyt_axi_lvds_io_v2_1_0.pao
+## Description:       Peripheral Analysis Order
+## Date:              Tue Nov 06 11:18:41 2012 (by Create and Import Peripheral Wizard)
+##############################################################################
+
+lib proc_common_v3_00_a proc_common_pkg vhdl
+lib proc_common_v3_00_a family_support vhdl
+lib proc_common_v3_00_a pselect_f vhdl
+lib proc_common_v3_00_a ipif_pkg vhdl
+lib proc_common_v3_00_a counter_f vhdl
+lib axi_lite_ipif_v1_01_a address_decoder vhdl
+lib axi_lite_ipif_v1_01_a slave_attachment vhdl
+lib lyt_axi_lvds_io_v1_00_a io_dff vhdl
+lib axi_lite_ipif_v1_01_a axi_lite_ipif vhdl
+lib lyt_axi_lvds_io_v1_00_a user_logic vhdl
+lib lyt_axi_lvds_io_v1_00_a lvds16gpio vhdl
+lib lyt_axi_lvds_io_v1_00_a lvds14sync vhdl
+lib lyt_axi_lvds_io_v1_00_a axi_lvds_io vhdl
+lib lyt_axi_lvds_io_v1_00_a lvds_wrapper vhdl
+lib lyt_axi_lvds_io_v1_00_a lyt_axi_lvds_io vhdl

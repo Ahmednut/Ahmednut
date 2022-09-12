@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<block>
+  <name>Carrier Perseus Board</name>
+  <key>nutaq_carrier_perseus</key>
+  <category>Nutaq</category>
+  <import>import nutaq</import>
+  <make>nutaq.carrier(0,"$id", $ip_addr)</make>
+  <param>
+    <name>IP address</name>
+    <key>ip_addr</key>
+    <type>string</type>
+  </param>
+  <doc>
+IP address:
+This is the ipv4 IP address of the carrier board.
+  </doc>
+</block>

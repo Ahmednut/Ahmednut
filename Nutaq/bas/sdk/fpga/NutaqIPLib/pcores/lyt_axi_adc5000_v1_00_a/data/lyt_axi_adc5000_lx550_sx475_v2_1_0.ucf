@@ -1,0 +1,26 @@
+################################################################################
+# Area location constraint for each of the ADC channel. Each is constrained
+# to one clock region
+################################################################################
+INST "*/ev10aq190_quad_phy_inst/serdes_v6_inst0" AREA_GROUP = "Adc5000_ChA";
+AREA_GROUP "Adc5000_ChA" RANGE=SLICE_X0Y200:SLICE_X11Y239;           
+
+INST "*/ev10aq190_quad_phy_inst/serdes_v6_inst1" AREA_GROUP = "Adc5000_ChB";
+AREA_GROUP "Adc5000_ChB" RANGE=SLICE_X0Y240:SLICE_X11Y279;           
+
+
+INST "*/ev10aq190_quad_phy_inst/serdes_v6_inst2" AREA_GROUP = "Adc5000_ChC";
+AREA_GROUP "Adc5000_ChC" RANGE=SLICE_X0Y160:SLICE_X11Y199;           
+
+INST "*/ev10aq190_quad_phy_inst/serdes_v6_inst3" AREA_GROUP = "Adc5000_ChD";
+AREA_GROUP "Adc5000_ChD" RANGE=SLICE_X0Y280:SLICE_X11Y319;           
+
+################################################################################
+#----- IODELAYCTRL palcement: one per clk region --------#
+################################################################################
+INST "*/ev10aq190_quad_phy_inst/serdes_v6_inst0/delayctrl_inst" LOC="IDELAYCTRL_X0Y5";
+INST "*/ev10aq190_quad_phy_inst/serdes_v6_inst1/delayctrl_inst" LOC="IDELAYCTRL_X0Y6";
+INST "*/ev10aq190_quad_phy_inst/serdes_v6_inst2/delayctrl_inst" LOC="IDELAYCTRL_X0Y4";
+INST "*/ev10aq190_quad_phy_inst/serdes_v6_inst3/delayctrl_inst" LOC="IDELAYCTRL_X0Y7";
+
+################################################################################

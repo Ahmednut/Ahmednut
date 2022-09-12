@@ -1,0 +1,15 @@
+##############################################################################
+## Filename:          lyt_axi_pcie_rtdex_v1_00_a/data/axi_writes_to_fifo_v2_1_0.pao
+## Description:       Peripheral Analysis Order
+## Date:              Fri Aug 10 12:59:23 2012 (by Create and Import Peripheral Wizard)
+##############################################################################
+
+lib proc_common_v3_00_a  all 
+lib axi_slave_burst_v1_00_a  all
+lib axi_lite_ipif_v1_01_a all
+lib lyt_axi_pcie_rtdex_v1_00_a generic_fifo vhdl
+lib lyt_axi_pcie_rtdex_v1_00_a user_logic_fifo vhdl
+lib lyt_axi_pcie_rtdex_v1_00_a user_logic_reg vhdl
+lib lyt_axi_pcie_rtdex_v1_00_a fifo_to_axi_stream vhdl
+lib lyt_axi_pcie_rtdex_v1_00_a rtdex_tx vhdl
+lib lyt_axi_pcie_rtdex_v1_00_a lyt_axi_pcie_rtdex vhdl

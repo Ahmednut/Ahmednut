@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<block>
+  <name>Playback</name>
+  <key>nutaq_playback</key>
+  <category>Nutaq</category>
+  <import>import nutaq</import>
+  <make>nutaq.playback($target_id,$block_priority)
+self.$(id).set_filename($file)
+self.$(id).set_continuous_mode($continuous)
+self.$(id).set_type($media_type)
+self.$(id).set_packet_size($packet_size)
+  </make>
+
+  <param>
+    <name>Target ID</name>
+    <key>target_id</key>
+    <type>string</type>
+  </param>
+
+  <param>
+    <name>Block Priority</name>
+    <key>block_priority</key>
+    <type>int</type>
+  </param>
+
+  <param>
+    <name>File</name>
+    <key>file</key>
+    <value>example.bin</value>
+    <type>file_open</type>
+  </param>
+  
+  <param>
+    <name>Continuous Playback</name>
+    <key>continuous</key>
+    <value>1</value>
+    <type>enum</type>
+    <option><name>Disabled</name><key>0</key></option>
+    <option><name>Enabled</name><key>1</key></option>
+  </param>
+
+  <param>
+    <name>Media Type</name>
+    <key>media_type</key>
+    <value>0</value>
+    <type>enum</type>
+    <option><name>Ethernet</name><key>0</key></option>
+    <option><name>PCI Express</name><key>1</key></option>
+  </param>
+
+  <param>
+    <name>Packet Size</name>
+    <key>packet_size</key>
+    <value>1024</value>
+    <type>int</type>    
+    <hide>part</hide>
+  </param>
+
+  <param>
+    <name>Channel</name>
+    <key>channel</key>
+    <value>0</value> 
+    <type>int</type>   
+    <hide>part</hide>
+  </param>
+
+  <check>$target_id</check>
+  <check>$channel >= 0</check>
+  <check>$block_priority >= 0</check>
+
+    <doc>
+Target ID:
+Block ID of carrier board.
+
+Block Priority:
+Specify the priority of the block between all the blocks who have this parameter. It sets the block order to be executed . Priority order starts from 0. For example, the block with priority of 0 will be the first to be executed, then priority 1, then priority 2, etc. 
+
+Continuous Playback:
+When continuous playback is enabled, the samples will playback indefinitely. 
+
+Media Type:
+Allows to switch between PCI Express and Ethernet RTDEX transport when using a Perseus board as a carrier.
+
+Packet Size:
+Should be configured as a power of two for more efficient processing.
+
+Channel:
+RTDEX channel to use for loading DDR3 RAM.
+    </doc>
+
+</block>

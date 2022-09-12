@@ -1,0 +1,11 @@
+#------------------------------------------------------------------------------
+# Filename:        lyt_mi250_record_if_v1_00a.pao
+# Description:     Microprocessor Peripheral Description
+# Designed by:    Khalid Bensadek
+# Date:            2012-08
+# Copyright (c) 2001-2012 LYRtech RD Inc.  All rights reserved.
+#
+# LYRtech RD Inc.
+#------------------------------------------------------------------------------
+
+lib lyt_mi250_record_if_v1_00_a lyt_mi250_record_if

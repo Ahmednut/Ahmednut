@@ -1,0 +1,18 @@
+
+INST "*lyt_axi_lvds_io_top/lvds_wrapper_u0/idelayctrl_inst"                                                                                    IODELAY_GROUP = TOP_IODELAY_GRP;
+INST "*lyt_axi_lvds_io_top/lvds_wrapper_u0/GEN_USE_SYNCHRONOUS_GPIO_GROUP0n.lvds16Gpio_group0/INPUT_RX_TX_BUFFER_GENERATE*.data_idelay_inst"   IODELAY_GROUP = TOP_IODELAY_GRP;
+INST "*lyt_axi_lvds_io_top/lvds_wrapper_u0/GEN_USE_SYNCHRONOUS_GPIO_GROUP1n.lvds16Gpio_group1/INPUT_RX_TX_BUFFER_GENERATE*.data_idelay_inst"   IODELAY_GROUP = TOP_IODELAY_GRP;
+INST "*lyt_axi_lvds_io_top/lvds_wrapper_u0/GEN_USE_SYNCHRONOUS_GPIO_GROUP0.lvds14sync_group0/clk_idelay_inst"                                  IODELAY_GROUP = TOP_IODELAY_GRP;
+INST "*lyt_axi_lvds_io_top/lvds_wrapper_u0/GEN_USE_SYNCHRONOUS_GPIO_GROUP0.lvds14sync_group0/valid_idelay_inst"                                IODELAY_GROUP = TOP_IODELAY_GRP;
+INST "*lyt_axi_lvds_io_top/lvds_wrapper_u0/GEN_USE_SYNCHRONOUS_GPIO_GROUP0.lvds14sync_group0/INPUT_RX_TX_BUFFER_GENERATE*.data_idelay_inst"    IODELAY_GROUP = TOP_IODELAY_GRP;
+INST "*lyt_axi_lvds_io_top/lvds_wrapper_u0/GEN_USE_SYNCHRONOUS_GPIO_GROUP1.lvds14sync_group1/clk_idelay_inst"                                  IODELAY_GROUP = TOP_IODELAY_GRP;
+INST "*lyt_axi_lvds_io_top/lvds_wrapper_u0/GEN_USE_SYNCHRONOUS_GPIO_GROUP1.lvds14sync_group1/valid_idelay_inst"                                IODELAY_GROUP = TOP_IODELAY_GRP;
+INST "*lyt_axi_lvds_io_top/lvds_wrapper_u0/GEN_USE_SYNCHRONOUS_GPIO_GROUP1.lvds14sync_group1/INPUT_RX_TX_BUFFER_GENERATE*.data_idelay_inst"    IODELAY_GROUP = TOP_IODELAY_GRP;
+
+# Pins in the same Bank than LVDS Bottom
+INST "*lyt_axi_lvds_io_top/lvds_wrapper_u0/GEN_USE_SYNCHRONOUS_GPIO_GROUP0n.lvds16Gpio_group0/INPUT_RX_TX_BUFFER_GENERATE[14].data_idelay_inst"   IODELAY_GROUP = BOTTOM_IODELAY_GRP;
+INST "*lyt_axi_lvds_io_top/lvds_wrapper_u0/GEN_USE_SYNCHRONOUS_GPIO_GROUP0.lvds14sync_group0/INPUT_RX_TX_BUFFER_GENERATE[12].data_idelay_inst"    IODELAY_GROUP = BOTTOM_IODELAY_GRP;
+INST "*lyt_axi_lvds_io_top/lvds_wrapper_u0/GEN_USE_SYNCHRONOUS_GPIO_GROUP1n.lvds16Gpio_group1/INPUT_RX_TX_BUFFER_GENERATE[15].data_idelay_inst"   IODELAY_GROUP = BOTTOM_IODELAY_GRP;
+INST "*lyt_axi_lvds_io_top/lvds_wrapper_u0/GEN_USE_SYNCHRONOUS_GPIO_GROUP1.lvds14sync_group1/INPUT_RX_TX_BUFFER_GENERATE[13].data_idelay_inst"    IODELAY_GROUP = BOTTOM_IODELAY_GRP;
+
+# INST "*lyt_axi_lvds_io_top/lvds_wrapper_u0/idelayctrl_inst" LOC = "IDELAYCTRL_X0Y3";

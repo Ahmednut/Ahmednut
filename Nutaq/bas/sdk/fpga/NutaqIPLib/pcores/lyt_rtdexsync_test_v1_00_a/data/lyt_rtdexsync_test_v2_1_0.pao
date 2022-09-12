@@ -1,0 +1,4 @@
+
+lib lyt_rtdexsync_test_v1_00_a lyt_type_p vhdl
+lib lyt_rtdexsync_test_v1_00_a lyt_ind_ch_reg vhdl
+lib lyt_rtdexsync_test_v1_00_a lyt_rtdexsync_test vhdl

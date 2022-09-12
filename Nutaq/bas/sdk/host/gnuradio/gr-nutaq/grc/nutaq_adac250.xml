@@ -1,0 +1,175 @@
+<?xml version="1.0"?>
+<block>
+  <name>ADAC250</name>
+  <key>nutaq_adac250</key>
+  <category>Nutaq</category>
+  <import>import nutaq</import>
+  <make>nutaq.adac250($target_id,$block_priority)
+self.$(id).set_default_ref_clk_source($ref_source)
+self.$(id).set_default_ref_clk_freq($ref_clk_freq)
+self.$(id).set_default_adc_clk_freq($adc_clk_freq)
+self.$(id).set_default_dac_clk_freq($dac_clk_freq)
+self.$(id).set_default_dac_interpolation($dac_interp)
+self.$(id).set_default_adc_gain(0,$adc_a_gain)
+self.$(id).set_default_adc_gain(1,$adc_b_gain)
+self.$(id).set_default_dac_gain(0,$dac_a_gain)
+self.$(id).set_default_dac_gain(1,$dac_b_gain)
+self.$(id).set_default_ref_clk_tuning($ref_clk_tuning)
+  </make>
+  <callback>set_adc_gain(0,$adc_a_gain)</callback>
+  <callback>set_adc_gain(1,$adc_b_gain)</callback>
+  <callback>set_dac_gain(0,$dac_a_gain)</callback>
+  <callback>set_dac_gain(1,$dac_b_gain)</callback>
+  <callback>tune_ref_clk($ref_clk_tuning)</callback>
+
+  <param>
+    <name>Target ID</name>
+    <key>target_id</key>
+    <type>string</type>
+  </param>
+
+  <param>
+    <name>Block Priority</name>
+    <key>block_priority</key>
+    <type>int</type>
+  </param>
+
+  <param>
+    <name>Ref Clk Source</name>
+    <key>ref_source</key>
+    <value>0</value>
+    <type>enum</type>    
+    <option><name>10 MHz Ref</name><key>0</key></option>
+    <option><name>External Ref</name><key>1</key></option>
+    <option><name>External Clk</name><key>2</key></option>
+  </param>
+  
+  <param>
+    <name>Ref Clk Freq</name>
+    <key>ref_clk_freq</key>
+    <value>10e6</value>
+    <type>real</type>
+  </param>
+  
+  <param>
+    <name>ADC Clk Freq</name>
+    <key>adc_clk_freq</key>
+    <value>250e6</value>
+    <type>real</type>
+  </param>
+  
+  <param>
+    <name>DAC Clk Freq</name>
+    <key>dac_clk_freq</key>
+    <value>250e6</value>
+    <type>real</type>
+  </param>
+
+  <param>
+    <name>DAC Interp</name>
+    <key>dac_interp</key>
+    <value>4</value>
+    <type>enum</type>    
+    <option><name>None</name><key>1</key></option>
+    <option><name>2X</name><key>2</key></option>
+    <option><name>4X</name><key>4</key></option>
+  </param>
+
+  <param>
+    <name>ADC A Gain</name>
+    <key>adc_a_gain</key>
+    <value>0</value>
+    <type>real</type>
+    <hide>part</hide>
+  </param>
+
+  <param>
+    <name>ADC B Gain</name>
+    <key>adc_b_gain</key>
+    <value>0</value>
+    <type>real</type>
+    <hide>part</hide>
+  </param>
+
+  <param>
+    <name>DAC A Gain</name>
+    <key>dac_a_gain</key>
+    <value>0</value>
+    <type>real</type>
+    <hide>part</hide>
+  </param>
+
+  <param>
+    <name>DAC B Gain</name>
+    <key>dac_b_gain</key>
+    <value>0</value>
+    <type>real</type>
+    <hide>part</hide>
+  </param>
+
+  <param>
+    <name>Ref Clk Tuning</name>
+    <key>ref_clk_tuning</key>
+    <value>32768</value>
+    <type>int</type>
+    <hide>part</hide>
+  </param>
+
+  <check>$target_id</check>
+  <check>$ref_clk_freq >= 0</check>
+  <check>$adc_clk_freq >= 50e6</check>
+  <check>$adc_clk_freq &lt;= 250e6</check>
+  <check>$dac_clk_freq >= 1e6</check>
+  <check>$dac_clk_freq &lt;= 250e6</check>
+  <check>$ref_clk_tuning >= 0</check>
+  <check>$ref_clk_tuning &lt;= 65535</check>
+  <check>$block_priority >= 0</check>
+
+    <doc>
+Target ID:
+Block ID of carrier board.
+
+Block Priority:
+Specify the priority of the block between all the blocks who have this parameter. It sets the block order to be executed . Priority order starts from 0. For example, the block with priority of 0 will be the first to be executed, then priority 1, then priority 2, etc. 
+
+Ref Clk Source:
+Choose the source of the reference clock. 
+- The internal 10 MHz oscillator of the ADAC250 used as a reference
+- The signal coming from the input reference connector of the adac250 front panel used as a reference
+- The signal coming from the input reference connector of the adac250 front panel directly used as the clock
+
+Ref Clk Freq:
+Reference clock frequency in Hz.
+- If the internal 10 MHz reference is used, this values must be 10000000 to selected clock source.
+- If the external reference is used, this value must match the frequency of the provided reference.
+- If the external clock is used, this value must match the frequency of the provided clock
+
+ADC Clk Freq:
+Specify the ADC sample rate frequency desired. This parameter can be between 50 MHz and 250 MHz and will be generated from the internal ADAC250 PLL.
+
+DAC Clk Freq:
+Specify the DAC sample rate frequency desired.
+This parameter can be between 1 MHz and 250 MHz and will be generated from the internal ADAC250 PLL.
+This value should not take into account the interpolation rate. For example, if a 250 MHz sample rate frequency is desired with an interpolation (4X) to generate an output analog signal at a 1 GHz refresh rate, this parameter need to be set to 250 MHz.
+
+DAC Interp:
+Set interpolation mode of the DAC. If set to None, the sample rate provided to the DAC chip is the same than the output analog signal refresh rate.
+If set to 2X or 4X, the refresh rate of the DAC will be greater than its input sample rate. The operating clock provided to the DAC chip will generated consequently.
+
+ADC Gain:
+Set the gain in dB of the ADC channel. The gain is made from a coarse gain (0 dB to 6 dB, with 0.5 dB step) and a fine gain (0 dB to 0.134 dB, in 128 steps). The parameter is rounded to the nearest available gain.
+Theses parameters are dynamic and can be used to change the ADC gains at run time.
+
+DAC Gain:
+Set the gain in dB of the DAC channel. The gain values are split linearly between 0 dB and 24.08 dB in 16 steps.
+Gain dB = 20*log10(N+1), N is integer [0,15]
+The parameter is rounded to the nearest available gain. 
+Theses parameters are dynamic and can be used to change the DAC gains at run time.
+
+Ref Clk Tuning:
+Set the output value to the DAC that control the internal 10 MHz reference oscillator frequency.
+The value can be between 0 and 65535 since it is a 16-bit DAC. 
+This parameter is dynamic and can be used to change the DAC output connected to the internal oscillator at run time.
+    </doc>
+
+</block>

@@ -1,0 +1,7 @@
+##############################################################################
+## Filename:          
+## Description:       Peripheral Analysis Order
+## Date:              Thu Jan 12 13:38:49 2012 (by Create and Import Peripheral Wizard)
+##############################################################################
+
+lib ntq_trig_delay_v1_00_a ntq_trig_delay vhdl

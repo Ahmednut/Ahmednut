@@ -1,0 +1,5 @@
+
+lib lyt_recplay_test_v1_00_a recplay_test_cnt_validation vhdl
+lib lyt_recplay_test_v1_00_a recplay_test_cnt_gen vhdl
+lib lyt_recplay_test_v1_00_a lyt_recplay_test vhdl
+

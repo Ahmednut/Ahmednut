@@ -1,0 +1,12 @@
+
+INST "*/*/ADCInterface_l"  AREA_GROUP = "Adac250AdcInterface";
+AREA_GROUP "Adac250AdcInterface"    RANGE = SLICE_X0Y120:SLICE_X30Y159;
+
+INST "*/*/DACInterface_l"  AREA_GROUP = "Adac250DacInterface";
+AREA_GROUP "Adac250DacInterface"    RANGE = SLICE_X0Y120:SLICE_X30Y159;
+
+
+INST "*ADAC250Wrapper_l/ADCInterface_l/BUFR_inst" LOC = "BUFR_X0Y7";
+INST "*ADAC250Wrapper_l/ADCInterface_l/IDELAYCTRL_inst" LOC = "IDELAYCTRL_X0Y3";
+INST "*ADAC250Wrapper_l/DACInterface_l/DACDLYCTRL_B16" LOC = "IDELAYCTRL_X0Y4";
+
