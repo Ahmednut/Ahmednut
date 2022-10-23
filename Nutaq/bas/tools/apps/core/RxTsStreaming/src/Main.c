@@ -82,7 +82,7 @@ static void Terminate(adp_result_t res);
 static adp_result_t ValidatingInitCall(handle_rtdexts_channel * handle_rxchannel);
 static adp_result_t FileParser(const char * Filename, handle_streaming * handle_rxstreaming, handle_rtdexts_channel * handle_rxchannel);
 
-handle_streaming hStreaming;
+handle_streaming hStreamingMain;
 handle_rtdexts_channel hChannel[MAX_RTDEXTS] = {NULL};
 
 /****************************************************************************************************************************
@@ -114,7 +114,7 @@ int main( int argc, char* argv[] )
 													  Parsing .ini file
 	************************************************************************************************************************/
 	printf("Parsing %s file for needed parameters...",ConfigFileName);
-	res = FileParser(ConfigFileName, &hStreaming, hChannel);
+	res = FileParser(ConfigFileName, &hStreamingMain, hChannel);
 	if(FAILURE(res))
 	{
 		printf("Error with FileParser\n");
@@ -137,7 +137,7 @@ int main( int argc, char* argv[] )
 	/************************************************************************************************************************
 													Calling main function
 	************************************************************************************************************************/
-	res = RxTsStreaming(&(argv[2]), argc-2, hStreaming, hChannel);
+	res = RxTsStreaming(&(argv[2]), argc-2, hStreamingMain, hChannel);
 	if(FAILURE(res))
 	{
 		printf("\nError with RxTsStreaming\n");
@@ -185,9 +185,9 @@ static adp_result_t ValidatingInitCall(handle_rtdexts_channel * handle_rxchannel
 		}
 	}
 
-	if (hStreaming != NULL)
+	if (hStreamingMain != NULL)
 	{
-		free(hStreaming);
+		free(hStreamingMain);
 	}
 
 	return CONFIGFILENOFMCTOINIT;

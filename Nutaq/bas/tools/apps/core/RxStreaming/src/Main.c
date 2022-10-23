@@ -80,7 +80,7 @@ static void Terminate(adp_result_t res);
 static adp_result_t ValidatingInitCall(handle_rtdex_channel * handle_rxchannel);
 static adp_result_t FileParser(const char * Filename, handle_streaming * handle_rxstreaming, handle_rtdex_channel * handle_rxchannel);
 
-handle_streaming hStreaming;
+handle_streaming hStreamingMain;
 handle_rtdex_channel hChannel[MAX_RTDEX] = {NULL};
 
 uint8_t err_lvl = INFO;
@@ -140,7 +140,7 @@ int main( int argc, char* argv[] )
 													  Parsing .ini file
 	************************************************************************************************************************/
 	bas_printf(INFO,"Parsing %s file for needed parameters...",ConfigFileName);
-	res = FileParser(ConfigFileName, &hStreaming, hChannel);
+	res = FileParser(ConfigFileName, &hStreamingMain, hChannel);
 	if(FAILURE(res))
 	{
 		bas_printf(ERR,"Error with FileParser\n");
@@ -169,7 +169,7 @@ int main( int argc, char* argv[] )
 			{
 				if (!_stricmp(argv[i] , "RTDEx_transfersize"))
 				{
-					hStreaming->u32TransferSize = atoi(argv[i+1]);
+					hStreamingMain->u32TransferSize = atoi(argv[i+1]);
 					i++;
 					n_addi_args = n_addi_args + 2;
 				}
@@ -189,7 +189,7 @@ int main( int argc, char* argv[] )
 	/************************************************************************************************************************
 													Calling main function
 	************************************************************************************************************************/
-	res = RxStreaming(&(argv[2]), argc-2-n_addi_args-VERBOSE_CTRL, hStreaming, hChannel);
+	res = RxStreaming(&(argv[2]), argc-2-n_addi_args-VERBOSE_CTRL, hStreamingMain, hChannel);
 	if(FAILURE(res))
 	{
 		bas_printf(ERR,"\nError with RxStreaming\n");
@@ -239,9 +239,9 @@ static adp_result_t ValidatingInitCall(handle_rtdex_channel * handle_rxchannel)
 		}
 	}
 
-	if (hStreaming != NULL)
+	if (hStreamingMain != NULL)
 	{
-		free(hStreaming);
+		free(hStreamingMain);
 	}
 
 	return CONFIGFILENOFMCTOINIT;

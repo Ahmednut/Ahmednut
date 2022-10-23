@@ -137,8 +137,9 @@ Result RxStreaming(char ** pcIpAddresses, uint32_t NbIpAddresses, handle_streami
     unsigned int uiRTDExBaseAddr;
 
 	// local to global for threads
-	//hStreaming = handle_rxstreaming;	
+	memcpy(&hStreaming, &handle_rxstreaming, sizeof(handle_streaming));	
 
+	
 	/************************************************************************************************************************
 													Connecting to Perseus
 	************************************************************************************************************************/
@@ -257,7 +258,7 @@ Result RxStreaming(char ** pcIpAddresses, uint32_t NbIpAddresses, handle_streami
 			if(FAILURE(res))
 			{
 				goto done;
-			}
+			}		
 		}
 	}
 
@@ -301,7 +302,7 @@ Result RxStreaming(char ** pcIpAddresses, uint32_t NbIpAddresses, handle_streami
 			if(FAILURE(res))
 			{
 				goto done;
-			}
+			}						
 		}
 	}
 
@@ -323,7 +324,7 @@ Result RxStreaming(char ** pcIpAddresses, uint32_t NbIpAddresses, handle_streami
 		if(FAILURE(res))
 		{
 			goto done;
-		}
+		}		
 	}
 
 	/************************************************************************************************************************
@@ -337,6 +338,7 @@ Result RxStreaming(char ** pcIpAddresses, uint32_t NbIpAddresses, handle_streami
 		{
 			bas_printf(ERR, "Failed to set process priority class to real-time.\n" );
 		}
+	
     }
 #endif
 	g_RtdexTransferDoneCnt = 0;

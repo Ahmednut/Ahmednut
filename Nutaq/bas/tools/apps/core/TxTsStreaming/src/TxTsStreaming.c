@@ -135,7 +135,9 @@ Result TxTsStreaming(char ** pcIpAddresses, uint32_t NbIpAddresses, handle_strea
 	connection_state state[MAX_PERSEUS];
 	connection_state StateTmp;
     unsigned int uiRTDExBaseAddr;
-
+    
+	// local to global for threads
+	memcpy(&hStreaming, &handle_txstreaming, sizeof(handle_streaming));	
 
 	/************************************************************************************************************************
 													Connecting to Perseus

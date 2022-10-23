@@ -138,7 +138,7 @@ Result TxStreaming(char ** pcIpAddresses, uint32_t NbIpAddresses, handle_streami
     unsigned int uiRTDExBaseAddr;
 
 	// local to global for threads
-	hStreaming = handle_txstreaming;	
+	memcpy(&hStreaming, &handle_txstreaming, sizeof(handle_streaming));
 
 	/************************************************************************************************************************
 													Connecting to Perseus
