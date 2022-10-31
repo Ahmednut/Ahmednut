@@ -56,7 +56,6 @@
 #include <string.h>
 
 #include "bas_error.h"
-#define snprintf _snprintf
 
 #define MAX_CHARACTER 256
 

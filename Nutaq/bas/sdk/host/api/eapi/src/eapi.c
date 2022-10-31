@@ -76,7 +76,6 @@
 #endif
 
 #ifdef _MSC_VER  //all MS compilers define this secure version
-#define snprintf(str, size, format, ...) _snprintf_s(str, size, _TRUNCATE, format, __VA_ARGS__)
 #define strncpy(dst, src, size)  strncpy_s(dst, size, src, _TRUNCATE)
 #endif
 
