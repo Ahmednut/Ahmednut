@@ -35,10 +35,13 @@
  * only, they should be removed in a production environment.
  *
  */
+ 
+ 
+ #include <linux/version.h>
+#if LINUX_VERSION_CODE < KERNEL_VERSION(5,15,0)
+ #include <stdarg.h>
+#endif
 
-#include <stdarg.h>
-
-#include <linux/version.h>
 #include <linux/kernel.h>
 #include <linux/module.h>
 #include <linux/moduleparam.h>
@@ -81,7 +84,6 @@
 #define DRIVER_VER_MAJ 0x01 // bcd
 //#define DRIVER_VER_MIN 0x01 // bcd - 09jan2013
 #define DRIVER_VER_MIN 0x02 // bcd - 15aug13
-
 
 
 /**************** First level configuration variables **********/
@@ -309,6 +311,8 @@
 
 
 #define MAILBOX_TX_QUEUE_LEN 32
+
+
 
 
 // CDMA memory descriptor definition:
@@ -3214,40 +3218,50 @@ static void ProcessPerseusCommandRx( PerseusData * perseus)
 // !!!
 static irqreturn_t IrqHandler( int irq, void *dev_id)
 {
-	PerseusData *perseus = (PerseusData *)dev_id;
+   PerseusData *perseus = (PerseusData *)dev_id;
    u32 uSR, uTfrCtrl;
    unsigned u, uDmNo;
 
-   if( perseus->pdev->irq == irq) {
-	   PDEBUG("MSI (%d), instance= %u, CPU= %u\n", irq, perseus->uInstance, smp_processor_id());
+   if( perseus->pdev->irq == irq) 
+   {
+      PDEBUG("MSI (%d), instance= %u, CPU= %u\n", irq, perseus->uInstance, smp_processor_id());
 
       // test for CDMA irq:
 //      PDEBUG( "CDMASR= x%X\n", ioread32( perseus->cdma+CDMASR));
-      if( (uSR = ioread32( perseus->cdma + CDMASR)) & (CDMASR_ERR_IRQ_BM | CDMASR_IOC_IRQ_BM | CDMASR_DLY_IRQ_BM)) {
+      if( (uSR = ioread32( perseus->cdma + CDMASR)) & (CDMASR_ERR_IRQ_BM | CDMASR_IOC_IRQ_BM | CDMASR_DLY_IRQ_BM)) 
+      {
          PDEBUG( "Cdma Interrupting, SR= x%X\n", uSR);
          iowrite32( CDMASR_ERR_IRQ_BM | CDMASR_IOC_IRQ_BM | CDMASR_DLY_IRQ_BM, perseus->cdma + CDMASR);
-         if( uSR & CDMASR_ERR_IRQ_BM) {
+         if( uSR & CDMASR_ERR_IRQ_BM) 
+         {
             PDEBUG( "Cdma irqErrors++");
             perseus->sqCdma.uIrqErrors++;
             iowrite32( CDMACR_RESET_BM, perseus->cdma + CDMACR); // reset Cdma
             for( u = 0; u < 5; u++)
+            {
                uSR = ioread32( perseus->cdma + CDMASR);
+            }
          }
-         if( uSR & CDMASR_DLY_IRQ_BM) {
+         if( uSR & CDMASR_DLY_IRQ_BM)
+          {
             perseus->sqCdma.bDelayTrig = 1;
             PDEBUG( "Cdma irqDelays++");
             perseus->sqCdma.uIrqDelays++;
             if( !perseus->sqCdma.bWorking)
+            {
                iSetupCdmaSg( perseus);
+            }
          }
-         if( uSR & CDMASR_IOC_IRQ_BM) {
+         if( uSR & CDMASR_IOC_IRQ_BM) 
+         {
             PDEBUG( "Cdma irqIocs++");
             perseus->sqCdma.uIrqIocs++;
          }
 
          spin_lock( &perseus->cdmaSpinlock);
 //         if( (uSR & CDMASR_IDLE_BM) && perseus->sqCdma.bWorking) { // removed MSA-28may13
-         if( (uSR & (CDMASR_IOC_IRQ_BM | CDMASR_ERR_IRQ_BM)) && perseus->sqCdma.bWorking) { // added MSA-28may2013
+         if( (uSR & (CDMASR_IOC_IRQ_BM | CDMASR_ERR_IRQ_BM)) && perseus->sqCdma.bWorking)// added MSA-28may2013
+         { 
             AllocChannel * pAC;
             CdmaDesc * list;
             unsigned uTotalSize, uDescSize, u;
@@ -3258,10 +3272,14 @@ static irqreturn_t IrqHandler( int irq, void *dev_id)
             perseus->sqCdma.bWorking = 0;
 
 #ifdef ROUND_TRIP_TEST
-            if( perseus->bRoundTripTest) {
+            if( perseus->bRoundTripTest)
+            {
                if( !perseus->txFifos[ perseus->uRTP_dmNo].pAC)
-                  PDEBUG( MYERR "RTT : Channel dev2host, dm= %u not connected", perseus->uRTP_dmNo);
-               else {
+               {
+                  PDEBUG( MYERR "RTT : Channel dev2host, dm= %u not connected", perseus->uRTP_dmNo);   
+               }
+               else
+               {
                   spin_unlock( &perseus->cdmaSpinlock);
                   iSetupDmDev2Host( perseus, perseus->txFifos[ perseus->uRTP_dmNo].pAC);
                   spin_lock( &perseus->cdmaSpinlock);
@@ -3275,12 +3293,15 @@ static irqreturn_t IrqHandler( int irq, void *dev_id)
 //   PDEBUG( MYERR "Invalid uNbActDesc= %u", perseus->sqCdma.uNbActDesc);
 //   perseus->sqCdma.uNbActDesc = 0;
 //   }
-            for( u = 0; u < perseus->sqCdma.uNbActDesc; u++, list = list->u.desc.next) {
+            for( u = 0; u < perseus->sqCdma.uNbActDesc; u++, list = list->u.desc.next) 
+            {
                uDescSize = list->u.desc.uControl & SGDESC_CTRL_BTT_BM;
                uTotalSize += uDescSize;
                pAC = perseus->rxFifos[ list->u.desc.uFifoNo].pAC;
                if( pAC)
+               {
                   pAC->dmaXferedSize += uDescSize;
+               }
             }
             QUEUE_GET( &perseus->sqCdma.descQueue, perseus->sqCdma.uNbActDesc * sizeof( CdmaDesc));
             perseus->sqCdma.uNbActDesc = 0;
@@ -3290,22 +3311,27 @@ static irqreturn_t IrqHandler( int irq, void *dev_id)
             iSetupCdmaSg( perseus);
             wake_up_interruptible( &perseus->outq);  /* wake-up writer(s) */
          }
-        else{
+         else
+         {
             spin_unlock( &perseus->cdmaSpinlock);
-            }
+         }
       }
 
 
       // Test for Data-Mover irq:
       uTfrCtrl = ioread32( perseus->rtdex + RTDEX_TX_DM_TFR_CTRL);
       if( !(uTfrCtrl & TFRCTRL_DONE_BM_all))
+      {
          goto no_dm1;
+      }
       spin_lock( &perseus->dmSpinlock);
       uTfrCtrl = ioread32( perseus->rtdex + RTDEX_TX_DM_TFR_CTRL);
       PDEBUG( "Data-Mover interrupting, uTfrCtrl= x%X\n", uTfrCtrl);
-      for( uDmNo = 0; (uTfrCtrl & TFRCTRL_DONE_BM_all) && (uDmNo < NB_DATA_MOVERS); uDmNo++) {
+      for( uDmNo = 0; (uTfrCtrl & TFRCTRL_DONE_BM_all) && (uDmNo < NB_DATA_MOVERS); uDmNo++) 
+      {
          if( (perseus->dmState[ uDmNo].bWorking)
-         && (uTfrCtrl & TFRCTRL_DONE_BM_n( uDmNo))) {
+         && (uTfrCtrl & TFRCTRL_DONE_BM_n( uDmNo))) 
+         {
             AllocChannel * pAC;
 
             PDEBUG( "DataMover Done channel %u\n", uDmNo);
@@ -3313,19 +3339,24 @@ static irqreturn_t IrqHandler( int irq, void *dev_id)
             iowrite32( uTfrCtrl, perseus->rtdex + RTDEX_TX_DM_TFR_CTRL); // clear interrupt source
             perseus->dmState[ uDmNo].bWorking = 0;
             pAC = perseus->txFifos[ uDmNo].pAC;
-            if( !pAC) {
+            if( !pAC) 
+            {
                PDEBUG( "Channel dev2host, dm= %u not connected", uDmNo);
                goto nextDm;
             }
-            if( pAC->uChnlType == TYPE_DEV_TO_DEV) {
+            if( pAC->uChnlType == TYPE_DEV_TO_DEV) 
+            {
                pAC->dmaXferedSize += perseus->dmState[ uDmNo].size;
                perseus->dmState[ uDmNo].size = 0; // sanity
                spin_unlock( &perseus->dmSpinlock);
                if( iSetupDmDev2DevSrc( perseus, pAC))
+               {
                   pAC->uState = ST_STOP_OK; //???
+               }
                spin_lock( &perseus->dmSpinlock);
             }
-            else if( pAC->uChnlType == TYPE_DEV_TO_HOST) {
+            else if( pAC->uChnlType == TYPE_DEV_TO_HOST) 
+            {
                QUEUE_PUT( &perseus->txFifos[ uDmNo].queue, (unsigned)perseus->dmState[ uDmNo].size);
                pAC->dmaXferedSize += perseus->dmState[ uDmNo].size;
                perseus->dmState[ uDmNo].size = 0; // sanity
@@ -3333,22 +3364,24 @@ static irqreturn_t IrqHandler( int irq, void *dev_id)
                spin_unlock( &perseus->dmSpinlock);
                iSetupDmDev2Host( perseus, pAC);
                spin_lock( &perseus->dmSpinlock);
-               }
             }
+         }
 nextDm:;
          uTfrCtrl = ioread32( perseus->rtdex + RTDEX_TX_DM_TFR_CTRL);
-         } // for
+      } // for
       spin_unlock( &perseus->dmSpinlock);
       wake_up_interruptible( &perseus->inq);  /* wake-up reader(s) */
 no_dm1:;
 
       // test for mailbox (inbox) messages:
-//      if( 0 != ioread16( perseus->inbox + MAILBOX_MSG_LEN16)) {
-      if( MBX_BUSY_SPACE((MailboxStruc*)perseus->inbox)) {
-		   ProcessMailboxRx( perseus->mailbox_ndev);
-	   }
+      //      if( 0 != ioread16( perseus->inbox + MAILBOX_MSG_LEN16)) {
+      if( MBX_BUSY_SPACE((MailboxStruc*)perseus->inbox)) 
+      {
+	 ProcessMailboxRx( perseus->mailbox_ndev);
+      }
       // MSA-19apr2013 (all the paragraph):
-      if( perseus->bMbxStoped && MBX_FREE_SPACE((MailboxStruc*)perseus->outbox)) {
+      if( perseus->bMbxStoped && MBX_FREE_SPACE((MailboxStruc*)perseus->outbox)) 
+      {
          PDEBUG( "Restarting mailbox out queue");
          perseus->bMbxStoped = 0;
          netif_wake_queue( perseus->mailbox_ndev);
@@ -3356,16 +3389,18 @@ no_dm1:;
 
       // test for Perseus command:
       if( CMD_IDLE != ioread32( perseus->mRegs +REG32_UB_CMD))
+      {
          ProcessPerseusCommandRx( perseus);
+      }
 
-	   PDEBUG("leaving MSI (%d)\n", irq);
+      PDEBUG("leaving MSI (%d)\n", irq);
    }
    else
    {
       PDEBUG("IRQ %d\n", irq);
-      }
+   }
 
-    return IRQ_HANDLED;
+   return IRQ_HANDLED;
 }
 
 /***********************************************************************
@@ -3728,7 +3763,8 @@ static int iCumPrintf( char * buffer, off_t offset, int len, int * pCurrIdx, cha
    if( *pCurrIdx >= offset + len)
       return -1;
 
-   va_start( args, fmt);
+   //va_start( args, fmt);
+   __builtin_va_start( args, fmt);
    n = vsnprintf( cBuff, sizeof cBuff, fmt, args);
    va_end( args);
 
